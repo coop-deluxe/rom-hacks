@@ -1,0 +1,65 @@
+
+diff --git a/src/game/behaviors/cap.inc.c b/src/game/behaviors/cap.inc.c
+index 81236d3..066ff1f 100644
+--- a/src/game/behaviors/cap.inc.c
++++ b/src/game/behaviors/cap.inc.c
+@@ -193,6 +193,8 @@ void bhv_normal_cap_init(void) {
+     o->oFriction = 0.89f;
+     o->oBuoyancy = 0.9f;
+     o->oOpacity = 0xFF;
++
++    save_file_set_cap_pos(o->oPosX, o->oPosY, o->oPosZ);
+ }
+
+ void normal_cap_set_save_flags(void) {
+@@ -249,6 +251,9 @@ void bhv_normal_cap_loop(void) {
+             break;
+     }
+
++    if ((s32) o->oForwardVel != 0)
++        save_file_set_cap_pos(o->oPosX, o->oPosY, o->oPosZ);
++
+     if (o->activeFlags == ACTIVE_FLAG_DEACTIVATED)
+         normal_cap_set_save_flags();
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+diff --git a/src/game/behaviors/mips.inc.c b/src/game/behaviors/mips.inc.c
+index 031c164..ed40333 100644
+--- a/src/game/behaviors/mips.inc.c
++++ b/src/game/behaviors/mips.inc.c
+@@ -87,22 +87,22 @@ s16 bhv_mips_find_furthest_waypoint_to_mario(void) {
+  */
+ void bhv_mips_act_wait_for_nearby_mario(void) {
+     UNUSED s16 collisionFlags = 0;
+-
+-    o->oForwardVel = 0.0f;
+-    collisionFlags = object_step();
++//no way points loaded so game crashes
++    // o->oForwardVel = 0.0f;
++    // collisionFlags = object_step();
+
+     // If Mario is within 500 units...
+-    if (is_point_within_radius_of_mario(o->oPosX, o->oPosY, o->oPosZ, 500)) {
++    // if (is_point_within_radius_of_mario(o->oPosX, o->oPosY, o->oPosZ, 500)) {
+         // If we fail to find a suitable waypoint...
+-        if (bhv_mips_find_furthest_waypoint_to_mario() == -1) {
++        // if (bhv_mips_find_furthest_waypoint_to_mario() == -1) {
+             // Call it quits.
+-            o->oAction = MIPS_ACT_WAIT_FOR_ANIMATION_DONE;
+-        } else {
++            // o->oAction = MIPS_ACT_WAIT_FOR_ANIMATION_DONE;
++        // } else {
+             // Resume path following.
+-            cur_obj_init_animation(1);
+-            o->oAction = MIPS_ACT_FOLLOW_PATH;
+-        }
+-    }
++            // cur_obj_init_animation(1);
++            // o->oAction = MIPS_ACT_FOLLOW_PATH;
++        // }
++    // }
+ }
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
