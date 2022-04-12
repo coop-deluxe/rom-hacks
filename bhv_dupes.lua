@@ -1,17 +1,3 @@
-function get_star_count()
-    local courseMax = 25
-    local courseMin = 1
-    return save_file_get_total_star_count(get_current_save_file_num() - 1, courseMin - 1, courseMax - 1)
-end
-
-function despawn_if_stars_below_121(obj)
-    if get_star_count() < 121 then
-        obj_mark_for_deletion(obj)
-    end
-end
-
---------------
-
 function bhv_breakable_rock_init(obj)
     obj.oFlags = OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE
     obj.collisionData = smlua_collision_util_get("col_hmc_geo_000530_0x7020308")
@@ -47,7 +33,7 @@ function bhv_shyguy_init(obj)
     obj.oFlags = (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
     obj.oAnimations = gObjectAnimations.flyguy_seg8_anims_08011A64
 
-    --SET_HOME()
+    --object_set_home(obj)
 
     -- SET_OBJ_PHYSICS
     obj.oWallHitboxRadius = 40
@@ -70,7 +56,7 @@ bhvCustomSMSRShyGuy = hook_behavior(nil, OBJ_LIST_PUSHABLE, true, bhv_shyguy_ini
 
 function bhv_breakable_window_init(obj)
     obj.oFlags = (OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
-    obj.collisionData = smlua_collision_util_get("wf_seg7_collision_small_bomp")
+    obj.collisionData = smlua_collision_util_get("custom_wf_seg7_collision_small_bomp")
     obj.hitboxRadius = 200
     obj.hitboxHeight = 200
     obj.oIntangibleTimer = 0
@@ -119,7 +105,7 @@ function bhv_red_sinking_platform_init(obj)
     obj.oFlags = OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE
     obj.collisionData = smlua_collision_util_get("col_rr_geo_0008C0_0x701ae78")
     obj.oPosY = obj.oPosY + -306
-    -- SET_HOME()
+    --object_set_home(obj)
 end
 
 function bhv_red_sinking_platform_loop(obj)
@@ -135,7 +121,7 @@ bhvCustomSMSRRedSinkingPlatform = hook_behavior(nil, OBJ_LIST_SURFACE, true, bhv
 function bhv_red_wave_platform_init(obj)
     obj.collisionData = smlua_collision_util_get("col_rr_geo_000678_0x701f870")
     obj.oFlags = OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE
-    -- SET_HOME()
+    --object_set_home(obj)
     cur_obj_scale(91 / 100.0)
     bhv_horizontal_grindel_init()
 end
@@ -181,7 +167,7 @@ bhvCustomSMSRLampPath = hook_behavior(nil, OBJ_LIST_SURFACE, true, bhv_lamp_path
 function bhv_rotating_donut_platform_init(obj)
     obj.oFlags = (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
     obj.collisionData = smlua_collision_util_get("col_rr_geo_0006C0_0x70187b8")
-    -- SET_HOME()
+    --object_set_home(obj)
 end
 
 function bhv_rotating_donut_platform_loop(obj)
@@ -226,7 +212,7 @@ bhvCustomSMSRLightsOnSwitch = hook_behavior(nil, OBJ_LIST_SURFACE, true, bhv_lig
 function bhv_rotating_wooden_gear_init(obj)
     obj.oFlags = (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
     obj.collisionData = smlua_collision_util_get("col_rr_geo_0007E8_0x7016960")
-    -- SET_HOME()
+    --object_set_home(obj)
 end
 
 function bhv_rotating_wooden_gear_loop(obj)
@@ -267,7 +253,7 @@ function bhv_yoshi_message_init(obj)
     obj.hitboxHeight = 150
     cur_obj_init_animation(0)
     obj.oBobombBuddyRole = 0
-    -- SET_HOME()
+    --object_set_home(obj)
     bhv_bobomb_buddy_init()
 end
 
@@ -396,7 +382,7 @@ bhvCustomSMSRBoatOnTrack = hook_behavior(nil, OBJ_LIST_SURFACE, true, bhv_boat_o
 
 function bhv_angry_sun_init(obj)
     obj.oFlags = OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE
-    -- SET_HOME()
+    --object_set_home(obj)
     cur_obj_scale(28 / 100.0)
     obj.oInteractType = INTERACT_FLAME
     obj.hitboxRadius = 50
@@ -470,7 +456,7 @@ function bhv_mips_message_init(obj)
     obj.hitboxHeight = 60
     cur_obj_init_animation(0)
     obj.oBobombBuddyRole = 0
-    -- SET_HOME()
+    --object_set_home(obj)
     bhv_bobomb_buddy_init()
 end
 
@@ -521,7 +507,7 @@ function bhv_invisible_cannon_init(obj)
     obj.oFlags = (OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
     obj.oInteractType = INTERACT_CANNON_BASE
     obj.oPosY = obj.oPosY + -340
-    -- SET_HOME()
+    --object_set_home(obj)
     obj.hitboxRadius = 150
     obj.hitboxHeight = 166
     obj.oIntangibleTimer = 0
@@ -552,7 +538,7 @@ bhvCustomSMSRTambourine = hook_behavior(nil, OBJ_LIST_SURFACE, true, bhv_tambour
 function bhv_small_bee_init(obj)
     obj.oFlags = (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
     obj.header.gfx.node.flags = obj.header.gfx.node.flags | GRAPH_RENDER_BILLBOARD
-    -- SET_HOME()
+    --object_set_home(obj)
     bhv_init_room()
     cur_obj_scale(150 / 100.0)
 end
@@ -600,7 +586,7 @@ bhvCustomSMSRStarMoving = hook_behavior(nil, OBJ_LIST_LEVEL, true, bhv_star_movi
 function bhv_falling_domino_init(obj)
     obj.oFlags = OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE
     obj.collisionData = smlua_collision_util_get("col_ttm_geo_000DF4_0x702b870")
-    -- SET_HOME()
+    --object_set_home(obj)
 end
 
 function bhv_falling_domino_loop(obj)
@@ -630,7 +616,7 @@ bhvCustomSMSRLavaLift = hook_behavior(nil, OBJ_LIST_SURFACE, true, bhv_lava_lift
 function bhv_rotating_lava_platform_init(obj)
     obj.oFlags = (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
     obj.collisionData = smlua_collision_util_get("col_lll_geo_000A78_0x701d68c")
-    -- SET_HOME()
+    --object_set_home(obj)
 end
 
 function bhv_rotating_lava_platform_loop(obj)
@@ -664,7 +650,7 @@ function bhv_sinking_donut_init(obj)
     obj.oFlags = OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE
     obj.collisionData = smlua_collision_util_get("col_rr_geo_000920_0x70295ec")
     obj.oPosY = obj.oPosY + -306
-    -- SET_HOME()
+    --object_set_home(obj)
 end
 
 function bhv_sinking_donut_loop(obj)
@@ -696,7 +682,7 @@ bhvCustomSMSRFloatingThwomp = hook_behavior(nil, OBJ_LIST_SURFACE, true, bhv_flo
 function bhv_tilting_pyramid_init(obj)
     obj.oFlags = (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
     obj.collisionData = smlua_collision_util_get("col_geo_bbh_0005F8_0x701fba8")
-    -- SET_HOME()
+    --object_set_home(obj)
     bhv_platform_normals_init()
 end
 
@@ -775,7 +761,7 @@ function bhv_toxic_waste_platform_init(obj)
     obj.oFlags = (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
     obj.collisionData = smlua_collision_util_get("col_hmc_geo_000548_0x7023478")
     obj.oPosY = obj.oPosY + -50
-    -- SET_HOME()
+    --object_set_home(obj)
 end
 
 function bhv_toxic_waste_platform_loop(obj)
@@ -791,7 +777,7 @@ function bhv_attracted_space_box_init(obj)
     obj.oFlags = (OBJ_FLAG_HOLDABLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
     obj.collisionData = smlua_collision_util_get("ssl_seg7_collision_tox_box")
     obj.oPosY = obj.oPosY + 256
-    -- SET_HOME()
+    --object_set_home(obj)
 end
 
 function bhv_attracted_space_box_loop(obj)
@@ -824,7 +810,7 @@ bhvCustomSMSRSpaceBox = hook_behavior(nil, OBJ_LIST_SURFACE, true, bhv_space_box
 function bhv_space_octagon_platform_init(obj)
     obj.collisionData = smlua_collision_util_get("ssl_seg7_collision_spindel")
     obj.oFlags = (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
-    -- SET_HOME()
+    --object_set_home(obj)
     bhv_ttc_moving_bar_init()
 end
 
@@ -840,7 +826,7 @@ bhvCustomSMSRSpaceOctagonPlatform = hook_behavior(nil, OBJ_LIST_SURFACE, true, b
 function bhv_space_red_platform_init(obj)
     obj.collisionData = smlua_collision_util_get("ssl_seg7_collision_grindel")
     obj.oFlags = OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE
-    -- SET_HOME()
+    --object_set_home(obj)
     cur_obj_scale(91 / 100.0)
     bhv_horizontal_grindel_init()
 end
@@ -857,7 +843,7 @@ bhvCustomSMSRSpaceRedPlatform = hook_behavior(nil, OBJ_LIST_SURFACE, true, bhv_s
 
 function bhv_bullet_mine_init(obj)
     obj.oFlags = (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_MOVE_XZ_USING_FVEL | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
-    -- SET_HOME()
+    --object_set_home(obj)
     obj.hitboxRadius = 50
     obj.hitboxHeight = 50
     obj.hitboxDownOffset = 50
