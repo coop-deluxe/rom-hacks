@@ -83,6 +83,7 @@ camera_set_use_course_specific_settings(false)
 ----------------------------------
 
 function mario_update_local(m)
+    override_camera()
     if (m.controller.buttonPressed & D_JPAD) ~= 0 then
         spawn_sync_object(
             id_bhvGoomba,
@@ -99,12 +100,17 @@ function mario_update(m)
 end
 
 function on_level_init()
-    save_file_set_using_backup_slot(gNetworkPlayers[0].currAreaIndex ~= 1)
+    local m = gMarioStates[0]
+    local np = gNetworkPlayers[0]
+
+    save_file_set_using_backup_slot(np.currAreaIndex ~= 1)
     gMarioStates[0].numStars = save_file_get_total_star_count(get_current_save_file_num()-1,COURSE_MIN-1,COURSE_MAX-1)
     gLevelValues.exitCastleArea = gNetworkPlayers[0].currAreaIndex
+
     star_areas_replace()
     course_names_swap()
     dialog_swap()
+
 end
 
 function get_star_collection_dialog()

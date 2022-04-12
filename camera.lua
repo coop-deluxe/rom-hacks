@@ -1,0 +1,28 @@
+sOverrideCameraModes = {
+    [CAMERA_MODE_RADIAL] = true,
+    [CAMERA_MODE_OUTWARD_RADIAL] = true,
+    [CAMERA_MODE_BEHIND_MARIO] = true,
+    [CAMERA_MODE_CLOSE] = true,
+    [CAMERA_MODE_SLIDE_HOOT] = true,
+    [CAMERA_MODE_PARALLEL_TRACKING] = true,
+    [CAMERA_MODE_FIXED] = true,
+    [CAMERA_MODE_8_DIRECTIONS] = true,
+    [CAMERA_MODE_FREE_ROAM] = true,
+    [CAMERA_MODE_SPIRAL_STAIRS] = true,
+}
+
+function override_camera()
+    local m = gMarioStates[0]
+    local np = gNetworkPlayers[0]
+
+    print(m.area.camera.mode, sOverrideCameraModes[m.area.camera.mode])
+    if sOverrideCameraModes[m.area.camera.mode] == nil then
+        return
+    end
+
+    if (np.currLevelNum == LEVEL_BOWSER_1 or np.currLevelNum == LEVEL_BOWSER_2 or np.currLevelNum == LEVEL_BOWSER_3) then
+        return
+    end
+
+    set_camera_mode(m.area.camera, CAMERA_MODE_ROM_HACK, 0)
+end
