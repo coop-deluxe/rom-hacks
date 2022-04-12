@@ -17,7 +17,7 @@ function bhv_custom_star_door_init(obj)
     obj.hitboxRadius = 80
     obj.hitboxHeight = 100
     
-    object_set_home(obj)
+    --object_set_home(obj)
     
     obj.oDrawingDistance = 20000
     bhv_door_init()
