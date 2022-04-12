@@ -15,7 +15,6 @@ function override_camera()
     local m = gMarioStates[0]
     local np = gNetworkPlayers[0]
 
-    print(m.area.camera.mode, sOverrideCameraModes[m.area.camera.mode])
     if sOverrideCameraModes[m.area.camera.mode] == nil then
         return
     end
