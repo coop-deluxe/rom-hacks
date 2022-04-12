@@ -1,3 +1,7 @@
+-- name: Super Mario 74 (+EE)
+-- description: This is two romhacks in one.\n\nSuper Mario 74 and Super Mario 74 Extreme Edition.\n\nThere are 60 custom levels, with a total of 308 stars.\n\nUse the chat command '/swap' to swap between EE and normal.\n\nCreated by Lugmillord\n\nPorted to PC by PeachyPeach and jesusyoshi54\n\nPorted to coop by djoslin0
+-- incompatible: romhack
+
 ------------------
 -- level values --
 ------------------
