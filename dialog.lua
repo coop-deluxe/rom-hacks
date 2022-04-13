@@ -489,16 +489,9 @@ LUGMILLORD")
 
 smlua_text_utils_dialog_replace(DIALOG_054,1,5,30,200, "Hi! I'm Info Toad 1.\n\
 \n\
-Now that it's the future we\n\
-have puppy camera. This new\n\
-camera can go up/down and side\n\
-to side. You can switch modes\n\
-with L between analogue and 8\n\
-directional.\n\
-If you don't like it, go into\n\
-the options menu by pressing\n\
-pause and disable it to get \n\
-the good old original stuff.")
+Welcome to SM74\n\
+\n\
+Enjoy your stay!")
 
 smlua_text_utils_dialog_replace(DIALOG_055,1,4,30,200, "Hey-ey, Mario, buddy,\n\
 howzit goin'? Step right\n\
