@@ -88,13 +88,6 @@ camera_set_use_course_specific_settings(false)
 
 function mario_update_local(m)
     override_camera()
-    if (m.controller.buttonPressed & D_JPAD) ~= 0 then
-        spawn_sync_object(
-            id_bhvGoomba,
-            smlua_model_util_get_id("lll_geo_sinking_rock"),
-            m.pos.x + 300, m.pos.y, m.pos.z,
-            nil)
-    end
 end
 
 function mario_update(m)
