@@ -6,10 +6,7 @@ sDialogsEE = false
 
 function dialog_swap_sm74()
 if not sDialogsEE then return end
-smlua_text_utils_dialog_replace(DIALOG_000,1,6,30,200, "Welcome to a new world!\
-\
-(For a better camera\
-press [R] and [C]|)")
+smlua_text_utils_dialog_replace(DIALOG_000,1,6,30,200, "Welcome to a new world!")
 
 smlua_text_utils_dialog_replace(DIALOG_001,1,4,95,200, "Help me...\
 I'm supposed to be a pink\
