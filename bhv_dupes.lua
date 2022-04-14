@@ -56,7 +56,7 @@ bhvCustomSMSRShyGuy = hook_behavior(nil, OBJ_LIST_PUSHABLE, true, bhv_shyguy_ini
 
 function bhv_breakable_window_init(obj)
     obj.oFlags = (OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
-    obj.collisionData = smlua_collision_util_get("custom_wf_seg7_collision_small_bomp")
+    obj.collisionData = smlua_collision_util_get("wf_seg7_collision_small_bomp")
     obj.hitboxRadius = 200
     obj.hitboxHeight = 200
     obj.oIntangibleTimer = 0
