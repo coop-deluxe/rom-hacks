@@ -25,6 +25,7 @@ gBehaviorValues.trajectories.PlatformLllTrajectory   = get_trajectory('lll_seg7_
 gBehaviorValues.trajectories.PlatformLll2Trajectory  = get_trajectory('lll_seg7_trajectory_07028660_RM2C_path')
 gBehaviorValues.trajectories.PlatformRr3Trajectory   = get_trajectory('rr_seg7_trajectory_0702ED9C_RM2C_path')
 gBehaviorValues.trajectories.PlatformRr4Trajectory   = get_trajectory('rr_seg7_trajectory_0702EEE0_RM2C_path')
+gBehaviorValues.trajectories.RacingPenguinTrajectory = get_trajectory('ccm_seg7_trajectory_penguin_race_RM2C_path')
 
 -- gBehaviorValues.KoopaBobAgility = ???
 -- gBehaviorValues.KoopaThiAgility = ???
