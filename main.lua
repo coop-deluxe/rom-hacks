@@ -1,3 +1,15 @@
+-- name: Star Road
+-- description: This is a romhack created by SKELUX
+-- incompatible: romhack
+------------------
+-- level values --
+------------------
+
+gLevelValues.entryLevel = LEVEL_CASTLE_GROUNDS
+gLevelValues.exitCastleLevel = LEVEL_CASTLE_GROUNDS
+gLevelValues.exitCastleWarpNode = 128
+gLevelValues.skipCreditsAt = LEVEL_CASTLE_GROUNDS
+
 --------------
 -- movtexs --
 --------------
@@ -62,14 +74,7 @@ camera_set_use_course_specific_settings(false)
 ----------------------------------
 
 function mario_update_local(m)
-    if (m.controller.buttonPressed & D_JPAD) ~= 0 then
-        -- spawn paddle
-        spawn_sync_object(
-            bhvCustomSMSRBreakableRock,
-            smlua_model_util_get_id("hmc_geo_000530"),
-            m.pos.x + 300, m.pos.y, m.pos.z,
-            nil)
-    end
+    override_camera()
 end
 
 function mario_update(m)
