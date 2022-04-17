@@ -10,6 +10,29 @@ gLevelValues.exitCastleLevel = LEVEL_CASTLE_GROUNDS
 gLevelValues.exitCastleWarpNode = 128
 gLevelValues.skipCreditsAt = LEVEL_CASTLE_GROUNDS
 
+---------------------
+-- behavior values --
+---------------------
+
+gBehaviorValues.trajectories.KoopaBobTrajectory      = get_trajectory('KoopaBoB_path')
+gBehaviorValues.trajectories.KoopaThiTrajectory      = get_trajectory('KoopaTHI_path')
+gBehaviorValues.trajectories.PlatformRrTrajectory    = get_trajectory('rr_seg7_trajectory_0702EC3C_RM2C_path')
+gBehaviorValues.trajectories.PlatformRr2Trajectory   = get_trajectory('rr_seg7_trajectory_0702ECC0_RM2C_path')
+gBehaviorValues.trajectories.PlatformCcmTrajectory   = get_trajectory('ccm_seg7_trajectory_0701669C_RM2C_path')
+gBehaviorValues.trajectories.PlatformBitfsTrajectory = get_trajectory('bitfs_seg7_trajectory_070159AC_RM2C_path')
+gBehaviorValues.trajectories.PlatformHmcTrajectory   = get_trajectory('hmc_seg7_trajectory_0702B86C_RM2C_path')
+gBehaviorValues.trajectories.PlatformLllTrajectory   = get_trajectory('lll_seg7_trajectory_0702856C_RM2C_path')
+gBehaviorValues.trajectories.PlatformLll2Trajectory  = get_trajectory('lll_seg7_trajectory_07028660_RM2C_path')
+gBehaviorValues.trajectories.PlatformRr3Trajectory   = get_trajectory('rr_seg7_trajectory_0702ED9C_RM2C_path')
+gBehaviorValues.trajectories.PlatformRr4Trajectory   = get_trajectory('rr_seg7_trajectory_0702EEE0_RM2C_path')
+
+-- gBehaviorValues.KoopaBobAgility = ???
+-- gBehaviorValues.KoopaThiAgility = ???
+-- gBehaviorValues.dialogs.KoopaQuickBobStartDialog = ???
+-- gBehaviorValues.dialogs.KoopaQuickThiStartDialog = ???
+-- gBehaviorValues.dialogs.KoopaQuickBobWinDialog = ???
+-- gBehaviorValues.dialogs.KoopaQuickThiWinDialog = ???
+
 --------------
 -- movtexs --
 --------------
