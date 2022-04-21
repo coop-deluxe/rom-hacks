@@ -10,6 +10,18 @@ function despawn_if_stars_below_121(obj)
     end
 end
 
+function get_mario_from_global_index(index)
+    local marioState = nil
+    for i = 0, (MAX_PLAYERS - 1) do
+        marioState = gMarioStates[i]
+        if gNetworkPlayers[i].globalIndex == index then
+            return marioState
+        end
+    end
+    
+    return gMarioStates[0]
+end
+
 --------------
 
 -- Replacement for SET_HOME()
@@ -19,4 +31,15 @@ function object_set_home(obj)
         obj.oHomeY = obj.oPosY;
         obj.oHomeZ = obj.oPosZ;
     end
+end
+
+-- Replacement for DROP_TO_FLOOR()
+function object_drop_to_floor(obj)
+    local x = obj.oPosX;
+    local y = obj.oPosY;
+    local z = obj.oPosZ;
+
+    local floorHeight = find_floor_height(x, y + 200, z);
+    obj.oPosY = floorHeight;
+    obj.oMoveFlags = (obj.oMoveFlags | OBJ_MOVE_ON_GROUND);
 end
