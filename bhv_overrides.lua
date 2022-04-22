@@ -57,11 +57,28 @@ bhvYoshi = hook_behavior(id_bhvYoshi, OBJ_LIST_GENACTOR, true, bhv_custom_yoshi_
 
 ---------------------------------------------------
 
+function bhv_custom_castle_cannon_grate_init(obj)
+    obj.oFlags = (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
+    obj.collisionData = smlua_collision_util_get("castle_grounds_seg7_collision_cannon_grill")
+    obj.oCollisionDistance = 4000
+    load_object_collision_model()
+    
+    if get_star_count() > 64 then -- 65 star check
+        obj.activeFlags = ACTIVE_FLAG_DEACTIVATED
+    end
+end
+
+-- hook the behavior
+bhvCustomHiddenAt120Stars = hook_behavior(id_bhvCustomHiddenAt120Stars, OBJ_LIST_SURFACE, true, bhv_custom_castle_cannon_grate_init, nil)
+
+
+---------------------------------------------------
+
 function bully_custom_act_level_death(obj)
     if obj_lava_death() == 1 then
         spawn_mist_particles()
         local m = get_mario_from_global_index(obj.oBullyLastNetworkPlayerIndex)
-        spawn_non_sync_object(id_bhvBowserKey, E_MODEL_BOWSER_KEY, m.pos.x, m.pos.y, m.pos.z, nil);
+        spawn_non_sync_object(id_bhvBowserKey, E_MODEL_BOWSER_KEY, m.pos.x, m.pos.y, m.pos.z, nil)
     end
 end
 
