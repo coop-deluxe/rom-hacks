@@ -16,7 +16,6 @@
 static const LevelScript level_wdw_POSTLOAD[] = {
 MARIO(/*model*/ MODEL_MARIO, /*behParam*/ 0x00000001, /*beh*/ bhvMario),
 LOAD_MODEL_FROM_GEO(22, warp_pipe_geo),
-LOAD_MODEL_FROM_GEO(23, bubbly_tree_geo),
 JUMP_LINK(script_func_global_1),
 JUMP_LINK(script_func_global_3),
 JUMP_LINK(local_area_wdw_1_),
@@ -31,7 +30,7 @@ EXIT(),
 };
 
 //AREA 2 LOADS
-static const LevelScript level_sl_area2load[] = {
+static const LevelScript level_wdw_area2load[] = {
 LOAD_MIO0(6,_group14_mio0SegmentRomStart,_group14_mio0SegmentRomEnd),
 LOAD_RAW(13,_group14_geoSegmentRomStart,_group14_geoSegmentRomEnd),
 ALLOC_LEVEL_POOL(),
@@ -51,7 +50,7 @@ LOAD_MIO0(5,_group2_mio0SegmentRomStart,_group2_mio0SegmentRomEnd),
 LOAD_RAW(12,_group2_geoSegmentRomStart,_group2_geoSegmentRomEnd),
 LOAD_MODEL_FROM_GEO(208, star_door_geo),
 LOAD_MODEL_FROM_GEO(37,  key_door_geo),
-JUMP_AREA(0,2,level_sl_area2load),
+JUMP_AREA(0,2,level_wdw_area2load),
 //AREA 1 LOADS
 LOAD_MIO0(6,_group13_mio0SegmentRomStart,_group13_mio0SegmentRomEnd),
 LOAD_RAW(13,_group13_geoSegmentRomStart,_group13_geoSegmentRomEnd),
