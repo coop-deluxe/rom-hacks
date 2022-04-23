@@ -1,6 +1,5 @@
 // Yoshi Egg (unused)
 
-// 0x05005778
 static const Vtx yoshi_egg_seg5_vertex_05005778[] = {
     {{{  -128,      0,      0}, 0, {     0,   1984}, {0x00, 0x00, 0x7f, 0x00}}},
     {{{   128,      0,      0}, 0, {  1984,   1984}, {0x00, 0x00, 0x7f, 0x00}}},
@@ -8,47 +7,38 @@ static const Vtx yoshi_egg_seg5_vertex_05005778[] = {
     {{{  -128,    256,      0}, 0, {     0,      0}, {0x00, 0x00, 0x7f, 0x00}}},
 };
 
-// 0x050057B8
 ALIGNED8 static const Texture yoshi_egg_seg5_texture_050057B8[] = {
 #include "actors/yoshi_egg/yoshi_egg_geo_0x50057b8_custom.rgba16.inc.c"
 };
 
-// 0x05005FB8
 ALIGNED8 static const Texture yoshi_egg_seg5_texture_05005FB8[] = {
 #include "actors/yoshi_egg/yoshi_egg_geo_0x5005fb8_custom.rgba16.inc.c"
 };
 
-// 0x050067B8
 ALIGNED8 static const Texture yoshi_egg_seg5_texture_050067B8[] = {
 #include "actors/yoshi_egg/yoshi_egg_geo_0x50067b8_custom.rgba16.inc.c"
 };
 
-// 0x05006FB8
 ALIGNED8 static const Texture yoshi_egg_seg5_texture_05006FB8[] = {
 #include "actors/yoshi_egg/yoshi_egg_geo_0x5006fb8_custom.rgba16.inc.c"
 };
 
-// 0x050077B8
 ALIGNED8 static const Texture yoshi_egg_seg5_texture_050077B8[] = {
 #include "actors/yoshi_egg/yoshi_egg_geo_0x50077b8_custom.rgba16.inc.c"
 };
 
-// 0x05007FB8
 ALIGNED8 static const Texture yoshi_egg_seg5_texture_05007FB8[] = {
 #include "actors/yoshi_egg/yoshi_egg_geo_0x5007fb8_custom.rgba16.inc.c"
 };
 
-// 0x050087B8
 ALIGNED8 static const Texture yoshi_egg_seg5_texture_050087B8[] = {
 #include "actors/yoshi_egg/yoshi_egg_geo_0x50087b8_custom.rgba16.inc.c"
 };
 
-// 0x05008FB8
 ALIGNED8 static const Texture yoshi_egg_seg5_texture_05008FB8[] = {
 #include "actors/yoshi_egg/yoshi_egg_geo_0x5008fb8_custom.rgba16.inc.c"
 };
 
-// 0x050097B8 - 0x05009820
 const Gfx yoshi_egg_seg5_dl_050097B8[] = {
     gsDPSetCombineMode(G_CC_DECALRGBA, G_CC_DECALRGBA),
     gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
@@ -64,56 +54,48 @@ const Gfx yoshi_egg_seg5_dl_050097B8[] = {
     gsSPEndDisplayList(),
 };
 
-// 0x05009820 - 0x05009838
 const Gfx yoshi_egg_seg5_dl_05009820[] = {
     gsDPPipeSync(),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, yoshi_egg_seg5_texture_05008FB8),
     gsSPBranchList(yoshi_egg_seg5_dl_050097B8),
 };
 
-// 0x05009838 - 0x05009850
 const Gfx yoshi_egg_seg5_dl_05009838[] = {
     gsDPPipeSync(),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, yoshi_egg_seg5_texture_050087B8),
     gsSPBranchList(yoshi_egg_seg5_dl_050097B8),
 };
 
-// 0x05009850 - 0x05009868
 const Gfx yoshi_egg_seg5_dl_05009850[] = {
     gsDPPipeSync(),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, yoshi_egg_seg5_texture_05007FB8),
     gsSPBranchList(yoshi_egg_seg5_dl_050097B8),
 };
 
-// 0x05009868 - 0x05009880
 const Gfx yoshi_egg_seg5_dl_05009868[] = {
     gsDPPipeSync(),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, yoshi_egg_seg5_texture_050077B8),
     gsSPBranchList(yoshi_egg_seg5_dl_050097B8),
 };
 
-// 0x05009880 - 0x05009898
 const Gfx yoshi_egg_seg5_dl_05009880[] = {
     gsDPPipeSync(),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, yoshi_egg_seg5_texture_05006FB8),
     gsSPBranchList(yoshi_egg_seg5_dl_050097B8),
 };
 
-// 0x05009898 - 0x050098B0
 const Gfx yoshi_egg_seg5_dl_05009898[] = {
     gsDPPipeSync(),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, yoshi_egg_seg5_texture_050067B8),
     gsSPBranchList(yoshi_egg_seg5_dl_050097B8),
 };
 
-// 0x050098B0 - 0x050098C8
 const Gfx yoshi_egg_seg5_dl_050098B0[] = {
     gsDPPipeSync(),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, yoshi_egg_seg5_texture_05005FB8),
     gsSPBranchList(yoshi_egg_seg5_dl_050097B8),
 };
 
-// 0x050098C8 - 0x050098E0
 const Gfx yoshi_egg_seg5_dl_050098C8[] = {
     gsDPPipeSync(),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, yoshi_egg_seg5_texture_050057B8),

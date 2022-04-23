@@ -5,12 +5,12 @@
 
 // 0x09002800
 ALIGNED8 const Texture mountain_09002800[] = {
-#include "../../textures/mountain/ttm_textures.02800_custom.rgba16.inc.c"
+#include "../../textures/mountain/angry_sun.rgba16.inc.c"
 };
 
 // 0x09003000
 ALIGNED8 const Texture mountain_09003000[] = {
-#include "../../textures/mountain/ttm_textures.03000_custom.rgba16.inc.c"
+#include "../../textures/mountain/yoshi_coin.rgba16.inc.c"
 };
 
 // 0x09004000
@@ -25,7 +25,7 @@ ALIGNED8 const Texture mountain_09004800[] = {
 
 // 0x09009800
 ALIGNED8 const Texture mountain_09009800[] = {
-#include "../../textures/mountain/ttm_textures.09800_custom.rgba16.inc.c"
+#include "../../textures/mountain/vine.rgba16.inc.c"
 };
 
 // 0x0900B000

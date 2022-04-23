@@ -1,3 +1,5 @@
+-- TODO: Have breaking all of these spawn a star.
+
 function bhv_breakable_rock_init(obj)
     obj.oFlags = OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE
     obj.collisionData = smlua_collision_util_get("col_hmc_geo_000530_0x7020308")
@@ -57,14 +59,26 @@ bhvCustomSMSRShyGuy = hook_behavior(nil, OBJ_LIST_PUSHABLE, true, bhv_shyguy_ini
 function bhv_breakable_window_init(obj)
     obj.oFlags = (OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
     obj.collisionData = smlua_collision_util_get("wf_seg7_collision_small_bomp")
+    obj.oIntangibleTimer = 0
     obj.hitboxRadius = 200
     obj.hitboxHeight = 200
-    obj.oIntangibleTimer = 0
+    obj.oMoveAngleYaw = obj.oMoveAngleYaw - 0x4000
+    --network_init_object(o, true, nil);
 end
 
 function bhv_breakable_window_loop(obj)
-    bhv_tower_door_loop()
     load_object_collision_model()
+    
+    if not (obj.oInteractStatus & INT_STATUS_INTERACTED) or not (obj.oInteractStatus & INT_STATUS_WAS_ATTACKED) then
+        return
+    end
+    
+    if not (check_local_mario_attacking(obj) == 0) then
+        obj_explode_and_spawn_coins(80, 0)
+        create_sound_spawner(obj, SOUND_GENERAL_WALL_EXPLOSION)
+        
+        obj.oInteractStatus = 0;
+    end
 end
 
 bhvCustomSMSRBreakableWindow = hook_behavior(nil, OBJ_LIST_SURFACE, true, bhv_breakable_window_init, bhv_breakable_window_loop)
@@ -75,7 +89,7 @@ function bhv_star_replica_init(obj)
     obj.oFlags = (OBJ_FLAG_HOLDABLE | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
     bhv_init_room()
     bhv_collect_star_init()
-    despawn_if_stars_below_121(obj) -- 121 star check
+    despawn_if_stars_below_count(obj, 121) -- 121 star check
 end
 
 function bhv_star_replica_loop(obj)
@@ -322,7 +336,7 @@ function bhv_special_breakable_box_init(obj)
     obj.collisionData = smlua_collision_util_get("breakable_box_seg8_collision_08012D70")
     obj.oCollisionDistance = 500
     bhv_init_room()
-    despawn_if_stars_below_121(obj) -- 121 star check
+    despawn_if_stars_below_count(obj, 121) -- 121 star check
 end
 
 function bhv_special_breakable_box_loop(obj)
