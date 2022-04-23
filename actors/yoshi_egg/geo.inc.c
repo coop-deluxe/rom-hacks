@@ -1,4 +1,3 @@
-// 0x0C0001E4
 const GeoLayout yoshi_egg_geo[] = {
    GEO_SCALE(0x00, 16384),
    GEO_OPEN_NODE(),

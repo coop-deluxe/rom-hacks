@@ -69,7 +69,7 @@ function bhv_custom_castle_cannon_grate_init(obj)
 end
 
 -- hook the behavior
-bhvCustomHiddenAt120Stars = hook_behavior(id_bhvCustomHiddenAt120Stars, OBJ_LIST_SURFACE, true, bhv_custom_castle_cannon_grate_init, nil)
+bhvCustomHiddenAt120Stars = hook_behavior(id_bhvHiddenAt120Stars, OBJ_LIST_SURFACE, true, bhv_custom_castle_cannon_grate_init, nil)
 
 
 ---------------------------------------------------

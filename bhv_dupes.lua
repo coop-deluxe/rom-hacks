@@ -1,3 +1,5 @@
+-- TODO: Have breaking all of these spawn a star.
+
 function bhv_breakable_rock_init(obj)
     obj.oFlags = OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE
     obj.collisionData = smlua_collision_util_get("col_hmc_geo_000530_0x7020308")
