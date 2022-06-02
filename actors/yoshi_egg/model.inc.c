@@ -1,5 +1,3 @@
-// Yoshi Egg (unused)
-
 static const Vtx yoshi_egg_seg5_vertex_05005778[] = {
     {{{  -128,      0,      0}, 0, {     0,   1984}, {0x00, 0x00, 0x7f, 0x00}}},
     {{{   128,      0,      0}, 0, {  1984,   1984}, {0x00, 0x00, 0x7f, 0x00}}},

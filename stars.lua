@@ -23,4 +23,6 @@ vec3f_set(starPositions.KleptoStarPos,         4399.0,  2892.0, -4541.0)
 vec3f_set(starPositions.MerryGoRoundStarPos,  -1600.0, -2100.0,   205.0)
 vec3f_set(starPositions.MrIStarPos,           -3173.0, -1638.0,  1809.0)
 vec3f_set(starPositions.BalconyBooStarPos,     4398.0,  2892.0, -4532.0)
-vec3f_set(starPositions.BigBullyTrioStarPos,   3700.0,   600.0, -5500.0)
+-- get set in main.lua
+--vec3f_set(starPositions.BigBullyTrioStarPos,   3700.0,   600.0, -5500.0)
+--vec3f_set(starPositions.BigBullyTrioStarPos,      0.0,  1950.0,  2220.0)

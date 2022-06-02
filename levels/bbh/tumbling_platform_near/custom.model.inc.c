@@ -1,4 +1,9 @@
 #include "custom.model.inc.h"
+
+ALIGNED8 const Texture spooky_09004000[] = {
+#include "../../textures/spooky/bbh_textures.04000.rgba16.inc.c"
+};
+
 Vtx VB_geo_bbh_0005F8_0x701f870[] = {
 {{{ 0, 233, 0 }, 0, { 0, 0 }, { 0, 0, 0, 255}}},
 {{{ 0, -6, 0 }, 0, { -3681, 0 }, { 0, 0, 0, 255}}},
@@ -25,7 +30,7 @@ gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, SHADE, TEXEL0, 0, SHADE, 0, 0, 
 gsSPTexture(65535, 65535, 0, 0, 1),
 gsSPLight(&Light_geo_bbh_0005F8_0x701fb98.col, 1),
 gsSPLight(&Light_geo_bbh_0005F8_0x701fb98.col, 2),
-gsDPSetTextureImage(0, 2, 1, spooky_09004000_custom),
+gsDPSetTextureImage(0, 2, 1, spooky_09004000),
 gsDPSetTile(0, 2, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0),
 gsDPLoadSync(),
 gsDPLoadBlock(7, 0, 0, 1023, 256),

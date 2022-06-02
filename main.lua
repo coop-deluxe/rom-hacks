@@ -1,14 +1,22 @@
 -- name: Star Road
 -- description: This is a romhack created by SKELUX
 -- incompatible: romhack
+
 ------------------
 -- level values --
 ------------------
 
-gLevelValues.entryLevel = LEVEL_CASTLE_GROUNDS
-gLevelValues.exitCastleLevel = LEVEL_CASTLE_GROUNDS
-gLevelValues.exitCastleWarpNode = 128
-gLevelValues.skipCreditsAt = LEVEL_CASTLE_GROUNDS
+gLevelValues.entryLevel             = LEVEL_CASTLE_GROUNDS
+gLevelValues.exitCastleLevel        = LEVEL_CASTLE_GROUNDS
+gLevelValues.exitCastleWarpNode     = 128
+gLevelValues.skipCreditsAt          = LEVEL_CASTLE_GROUNDS
+gLevelValues.pssSlideStarTime       = 630
+gLevelValues.metalCapDuration       = 1200/2
+gLevelValues.metalCapDurationCotmc  = 1200/2
+gLevelValues.wingCapDuration        = 3600/2
+gLevelValues.wingCapDurationTotwc   = 2400/2
+gLevelValues.vanishCapDuration      = 1200/2
+gLevelValues.vanishCapDurationVcutm = 1200/2
 
 ---------------------
 -- behavior values --
@@ -27,12 +35,25 @@ gBehaviorValues.trajectories.PlatformRr3Trajectory   = get_trajectory('rr_seg7_t
 gBehaviorValues.trajectories.PlatformRr4Trajectory   = get_trajectory('rr_seg7_trajectory_0702EEE0_RM2C_path')
 gBehaviorValues.trajectories.RacingPenguinTrajectory = get_trajectory('ccm_seg7_trajectory_penguin_race_RM2C_path')
 
--- gBehaviorValues.KoopaBobAgility = ???
--- gBehaviorValues.KoopaThiAgility = ???
--- gBehaviorValues.dialogs.KoopaQuickBobStartDialog = ???
--- gBehaviorValues.dialogs.KoopaQuickThiStartDialog = ???
--- gBehaviorValues.dialogs.KoopaQuickBobWinDialog = ???
--- gBehaviorValues.dialogs.KoopaQuickThiWinDialog = ???
+gBehaviorValues.ToadStar1Requirement = 0
+gBehaviorValues.ToadStar2Requirement = 0
+gBehaviorValues.ToadStar3Requirement = 0
+
+gBehaviorValues.dialogs.ToadStar1Dialog = DIALOG_082
+gBehaviorValues.dialogs.ToadStar2Dialog = DIALOG_076
+gBehaviorValues.dialogs.ToadStar3Dialog = DIALOG_083
+gBehaviorValues.dialogs.ToadStar1AfterDialog = DIALOG_154
+gBehaviorValues.dialogs.ToadStar2AfterDialog = DIALOG_155
+gBehaviorValues.dialogs.ToadStar3AfterDialog = DIALOG_156
+
+gBehaviorValues.KingBobombHealth = 4
+
+gBehaviorValues.KoopaBobAgility     = 4
+gBehaviorValues.KoopaThiAgility     = 6
+gBehaviorValues.KoopaCatchupAgility = 8
+
+gBehaviorValues.MipsStar1Requirement = 0
+gBehaviorValues.MipsStar2Requirement = 255
 
 --------------
 -- movtexs --
@@ -118,6 +139,7 @@ smlua_audio_utils_replace_sequence(0x32, 0x25, 80, "32_Seq_smsrdeluxe_custom")
 ------------
 -- camera --
 ------------
+
 camera_set_use_course_specific_settings(false)
 
 ----------------------------------
@@ -132,4 +154,14 @@ function mario_update(m)
     end
 end
 
+function on_level_init()
+    local np = gNetworkPlayers[0]
+    if np.currLevelNum == LEVEL_BOWSER_2 then
+        vec3f_set(starPositions.BigBullyTrioStarPos,      0.0,  1950.0,  2220.0)
+    else
+        vec3f_set(starPositions.BigBullyTrioStarPos,   3700.0,   600.0, -5500.0)
+    end
+end
+
 hook_event(HOOK_MARIO_UPDATE, mario_update)
+hook_event(HOOK_ON_LEVEL_INIT, on_level_init)

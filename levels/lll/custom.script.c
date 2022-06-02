@@ -16,6 +16,7 @@
 extern u8 _lll_segment_ESegmentRomStart[]; 
 extern u8 _lll_segment_ESegmentRomEnd[];
 #include "levels/ttm/header.h"
+
 const LevelScript level_lll_entry[] = {
     INIT_LEVEL(),
     LOAD_MIO0(0x07, _ttm_segment_7SegmentRomStart, _ttm_segment_7SegmentRomEnd),

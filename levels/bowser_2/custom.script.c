@@ -120,7 +120,7 @@ const LevelScript local_objects_bowser_2_1_[] = {
     OBJECT_WITH_ACTS(0,85,1076,1364,0,270,0,0x0, bhvBowser,31),
     OBJECT_WITH_ACTS(9,-48,1492,-135,0,0,0,0x0, bhvCustomSMSRRotatingLavaPlatform,31),
     OBJECT_WITH_ACTS(9,-48,1492,1875,0,0,0,0x0, bhvCustomSMSRRotatingLavaPlatform,31),
-    OBJECT_WITH_ACTS(87,-46,1843,1843,0,270,0,0x0, bhvBigBullyBoss,31),
+    OBJECT_WITH_ACTS(87,-46,1843,1843,0,270,0,0x0, bhvBigBully,31),
     OBJECT_WITH_ACTS(86,159,1799,-346,0,270,0,0x0, bhvSmallBully,31),
     OBJECT_WITH_ACTS(86,-48,1799,27,0,270,0,0x0, bhvSmallBully,31),
     OBJECT_WITH_ACTS(86,-260,1799,-341,0,270,0,0x0, bhvSmallBully,31),
