@@ -158,14 +158,13 @@ bhvSMSRShyGuy = hook_behavior(nil, OBJ_LIST_PUSHABLE, true, bhv_shyguy_init, bhv
 --------------
 
 function bhv_breakable_window_init(obj)
-    --obj.oFlags = (OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
-    --obj.collisionData = smlua_collision_util_get("wf_seg7_collision_small_bomp")
-    --obj.oIntangibleTimer = 0
-    --obj.hitboxRadius = 200
-    --obj.hitboxHeight = 200
+    obj.oFlags = (OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
+    obj.collisionData = smlua_collision_util_get("wf_seg7_collision_small_bomp")
+    obj.oIntangibleTimer = 0
+    obj.hitboxRadius = 200
+    obj.hitboxHeight = 200
     --obj.oMoveAngleYaw = obj.oMoveAngleYaw - 0x4000
-
-    network_init_object(obj, true, { 'oInteractStatus' });
+    network_init_object(obj, false, { 'oInteractStatus' });
 end
 
 function bhv_breakable_window_loop(obj)
@@ -173,7 +172,7 @@ function bhv_breakable_window_loop(obj)
         return
     end
 
-    if not (check_local_mario_attacking(obj) == 0) or obj.oSyncDeath then
+    if not (check_local_mario_attacking(obj) == 0) then
         obj_explode_and_spawn_coins(80, 0)
         create_sound_spawner(obj, SOUND_GENERAL_WALL_EXPLOSION)
 
