@@ -336,3 +336,22 @@ const Trajectory ccm_seg7_trajectory_penguin_race_RM2C_path[] = {
 	TRAJECTORY_POS(12,-3742,-4454,1279),
 	TRAJECTORY_END(),
 };
+
+const static Trajectory rr_bowling_ball_path[] = {
+    TRAJECTORY_POS(0, -1546, 6719, 7173),
+    TRAJECTORY_POS(1, 82, 6298, 7143),
+    TRAJECTORY_POS(2, 1108, 6029, 6691),
+    TRAJECTORY_POS(3, 1544, 6102, 5737),
+    TRAJECTORY_POS(4, 1089, 5427, 4659),
+    TRAJECTORY_POS(5, 610, 5341, 4363),
+    TRAJECTORY_POS(6, -432, 5056, 4102),
+    TRAJECTORY_POS(7, -1265, 4784, 3373),
+    TRAJECTORY_POS(8, -1400, 4619, 1820),
+    TRAJECTORY_END(),
+};
+
+static Trajectory ttc_bowling_ball_path[] = {
+    TRAJECTORY_POS(0, -455, 1472, -1684),
+    TRAJECTORY_POS(1, -455, 1472, 5361),
+    TRAJECTORY_END(),
+};

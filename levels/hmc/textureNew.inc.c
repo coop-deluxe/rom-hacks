@@ -121,17 +121,17 @@ ALIGNED8 u8 hmc_1__texture_0E017810[] = {
 
 // 0x07003000 - 0x07003800
 ALIGNED8 static const u8 hmc_seg7_texture_07003000[] = {
-#include "levels/hmc/3_custom.rgba16.inc.c"
+#include "levels/hmc/3.rgba16.inc.c"
 };
 
 // 0x07004000 - 0x07004800
 ALIGNED8 static const u8 hmc_seg7_texture_07004000[] = {
-#include "levels/hmc/5_custom.rgba16.inc.c"
+#include "levels/hmc/5.rgba16.inc.c"
 };
 
 // 0x07004800 - 0x07005800
 ALIGNED8 static const u8 hmc_seg7_texture_07004800[] = {
-#include "levels/hmc/6_custom.rgba16.inc.c"
+#include "levels/hmc/6.rgba16.inc.c"
 };
 
 ALIGNED8 u8 hmc_custom_texture_070203D8[] = {

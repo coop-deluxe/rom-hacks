@@ -1,5 +1,5 @@
 #include "custom.model.inc.h"
-
+// 0x0701FDB8 - 0x0701FEA8
 ALIGNED8 const Texture spooky_09005600[] = {
 #include "../../textures/spooky/bbh_textures.05600.rgba16.inc.c"
 };

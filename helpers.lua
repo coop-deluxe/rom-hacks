@@ -1,3 +1,12 @@
+_G.switch = function(param, case_table)
+    local case = case_table[param]
+    if case then return case() end
+    local def = case_table['default']
+    return def and def() or nil
+end
+
+--------------
+
 function get_star_count()
     local courseMax = 25
     local courseMin = 1
@@ -57,9 +66,37 @@ end
 
 --------------
 
+-- Replacement for lll_octagonal_mesh_find_y_offset()
+function find_y_offset_for_sinking_platform(obj, sinkOffset, a3)
+    if not (cur_obj_is_any_player_on_platform() == 0) then 
+        if obj.oSinkWhenSteppedOnUnk104 < 0x4000 then
+            obj.oSinkWhenSteppedOnUnk104 = obj.oSinkWhenSteppedOnUnk104 + sinkOffset
+        else
+            obj.oSinkWhenSteppedOnUnk104 = 0x4000
+        end
+    else
+        if obj.oSinkWhenSteppedOnUnk104 > 0 then
+            obj.oSinkWhenSteppedOnUnk104 = obj.oSinkWhenSteppedOnUnk104 - sinkOffset
+        else
+            obj.oSinkWhenSteppedOnUnk104 = 0
+        end
+    end
+    
+    local yOffset = sins(obj.oSinkWhenSteppedOnUnk104) * a3
+    return yOffset
+end
+
+-- Replacement for bhv_lll_sinking_rock_block_loop()
+function sinking_perform_sink_check(obj)
+    local yOffset = find_y_offset_for_sinking_platform(obj, 124, -110)
+    
+    obj.oGraphYOffset = 0
+    obj.oPosY = obj.oHomeY + yOffset
+end
+
 -- Replacement for native create_sound_spawner()
 function create_sound_spawner(obj, soundId)
-    soundObj = spawn_non_sync_object(id_bhvSoundSpawner, 0, 0, 0, 0, nil);
+    local soundObj = spawn_non_sync_object(id_bhvSoundSpawner, 0, 0, 0, 0, nil);
     if soundObj == nil then
         return
     end
@@ -67,15 +104,58 @@ function create_sound_spawner(obj, soundId)
     soundObj.oSoundEffectUnkF4 = soundId
 end
 
+-- Replacement for spawn_object_abs_with_rot()
+function spawn_object_abs_with_rot(parent, uselessArg, modelId, bhvId, x, y, z, rx, ry, rz)
+    local childObj = spawn_non_sync_object(bhvId, modelId, 0, 0, 0, nil);
+    if childObj == nil then
+        return nil
+    end
+    
+    childObj.parentObj = parent
+    childObj.header.gfx.areaIndex = parent.header.gfx.areaIndex
+    childObj.header.gfx.activeAreaIndex = parent.header.gfx.areaIndex
+    childObj.globalPlayerIndex = 0
+    
+    obj_set_pos(childObj, x, y, z);
+    obj_set_angle(childObj, rx, ry, rz);
+    
+    return childObj
+end
+
+function spawn_sync_object_abs_with_rot(parent, uselessArg, modelId, bhvId, x, y, z, rx, ry, rz)
+    local childObj = spawn_sync_object(bhvId, modelId, 0, 0, 0, nil);
+    if childObj == nil then
+        return nil
+    end
+    
+    childObj.parentObj = parent
+    childObj.header.gfx.areaIndex = parent.header.gfx.areaIndex
+    childObj.header.gfx.activeAreaIndex = parent.header.gfx.areaIndex
+    childObj.globalPlayerIndex = 0
+    
+    obj_set_pos(childObj, x, y, z);
+    obj_set_angle(childObj, rx, ry, rz);
+    
+    return childObj
+end
+
 --------------
 
 -- Replacement for SET_HOME()
 function object_set_home(obj)
-    if not (obj.coopFlags & (COOP_OBJ_FLAG_LUA | COOP_OBJ_FLAG_NETWORK)) then
-        obj.oHomeX = obj.oPosX;
-        obj.oHomeY = obj.oPosY;
-        obj.oHomeZ = obj.oPosZ;
-    end
+    obj.oHomeX = obj.oPosX;
+    obj.oHomeY = obj.oPosY;
+    obj.oHomeZ = obj.oPosZ;
+end
+
+-- Replacement for SET_OBJ_PHYSICS()
+function object_set_physics(obj, hitboxRadius, gravity, bounciness, dragStrength, friction, buoyancy)
+    obj.oWallHitboxRadius = hitboxRadius;
+    obj.oGravity = gravity / 100;
+    obj.oBounciness = bounciness / 100;
+    obj.oDragStrength = dragStrength / 100;
+    obj.oFriction = friction / 100;
+    obj.oBuoyancy = buoyancy / 100;
 end
 
 -- Replacement for DROP_TO_FLOOR()
@@ -87,4 +167,27 @@ function object_drop_to_floor(obj)
     local floorHeight = find_floor_height(x, y + 200, z);
     obj.oPosY = floorHeight;
     obj.oMoveFlags = (obj.oMoveFlags | OBJ_MOVE_ON_GROUND);
+end
+
+-- Replacement for SPAWN_CHILD_WITH_PARAM()
+function spawn_child_with_param(obj, bhvParam, modelId, bhvId)
+    local childObj = spawn_non_sync_object(bhvId, modelId, 0, 0, 0, nil);
+    if childObj == nil then
+        --print("Failed to spawn child object with parameters.")
+        return nil
+    end
+    obj_copy_pos_and_angle(childObj, obj)
+    childObj,oBehParams2ndByte = bhvParam;
+    return childObj
+end
+
+function spawn_sync_child_with_param(obj, bhvParam, modelId, bhvId)
+    local childObj = spawn_sync_object(bhvId, modelId, 0, 0, 0, nil);
+    if childObj == nil then
+        --print("Failed to spawn synced child object with parameters.")
+        return nil
+    end
+    obj_copy_pos_and_angle(childObj, obj)
+    childObj,oBehParams2ndByte = bhvParam;
+    return childObj
 end

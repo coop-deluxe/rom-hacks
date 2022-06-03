@@ -2,59 +2,6 @@
 -- description: This is a romhack created by SKELUX
 -- incompatible: romhack
 
-------------------
--- level values --
-------------------
-
-gLevelValues.entryLevel             = LEVEL_CASTLE_GROUNDS
-gLevelValues.exitCastleLevel        = LEVEL_CASTLE_GROUNDS
-gLevelValues.exitCastleWarpNode     = 128
-gLevelValues.skipCreditsAt          = LEVEL_CASTLE_GROUNDS
-gLevelValues.pssSlideStarTime       = 630
-gLevelValues.metalCapDuration       = 1200/2
-gLevelValues.metalCapDurationCotmc  = 1200/2
-gLevelValues.wingCapDuration        = 3600/2
-gLevelValues.wingCapDurationTotwc   = 2400/2
-gLevelValues.vanishCapDuration      = 1200/2
-gLevelValues.vanishCapDurationVcutm = 1200/2
-
----------------------
--- behavior values --
----------------------
-
-gBehaviorValues.trajectories.KoopaBobTrajectory      = get_trajectory('KoopaBoB_path')
-gBehaviorValues.trajectories.KoopaThiTrajectory      = get_trajectory('KoopaTHI_path')
-gBehaviorValues.trajectories.PlatformRrTrajectory    = get_trajectory('rr_seg7_trajectory_0702EC3C_RM2C_path')
-gBehaviorValues.trajectories.PlatformRr2Trajectory   = get_trajectory('rr_seg7_trajectory_0702ECC0_RM2C_path')
-gBehaviorValues.trajectories.PlatformCcmTrajectory   = get_trajectory('ccm_seg7_trajectory_0701669C_RM2C_path')
-gBehaviorValues.trajectories.PlatformBitfsTrajectory = get_trajectory('bitfs_seg7_trajectory_070159AC_RM2C_path')
-gBehaviorValues.trajectories.PlatformHmcTrajectory   = get_trajectory('hmc_seg7_trajectory_0702B86C_RM2C_path')
-gBehaviorValues.trajectories.PlatformLllTrajectory   = get_trajectory('lll_seg7_trajectory_0702856C_RM2C_path')
-gBehaviorValues.trajectories.PlatformLll2Trajectory  = get_trajectory('lll_seg7_trajectory_07028660_RM2C_path')
-gBehaviorValues.trajectories.PlatformRr3Trajectory   = get_trajectory('rr_seg7_trajectory_0702ED9C_RM2C_path')
-gBehaviorValues.trajectories.PlatformRr4Trajectory   = get_trajectory('rr_seg7_trajectory_0702EEE0_RM2C_path')
-gBehaviorValues.trajectories.RacingPenguinTrajectory = get_trajectory('ccm_seg7_trajectory_penguin_race_RM2C_path')
-
-gBehaviorValues.ToadStar1Requirement = 0
-gBehaviorValues.ToadStar2Requirement = 0
-gBehaviorValues.ToadStar3Requirement = 0
-
-gBehaviorValues.dialogs.ToadStar1Dialog = DIALOG_082
-gBehaviorValues.dialogs.ToadStar2Dialog = DIALOG_076
-gBehaviorValues.dialogs.ToadStar3Dialog = DIALOG_083
-gBehaviorValues.dialogs.ToadStar1AfterDialog = DIALOG_154
-gBehaviorValues.dialogs.ToadStar2AfterDialog = DIALOG_155
-gBehaviorValues.dialogs.ToadStar3AfterDialog = DIALOG_156
-
-gBehaviorValues.KingBobombHealth = 4
-
-gBehaviorValues.KoopaBobAgility     = 4
-gBehaviorValues.KoopaThiAgility     = 6
-gBehaviorValues.KoopaCatchupAgility = 8
-
-gBehaviorValues.MipsStar1Requirement = 0
-gBehaviorValues.MipsStar2Requirement = 255
-
 --------------
 -- movtexs --
 --------------
@@ -85,7 +32,6 @@ movtexqc_register('wmotr_1_Movtex_0',            LEVEL_WMOTR,            1, 0)
 --smlua_audio_utils_replace_sequence(0x14, 0x1A, 80, "14_Seq_smsrdeluxe_custom")
 --smlua_audio_utils_replace_sequence(0x15, 0x0E, 70, "15_Seq_smsrdeluxe_custom")
 --smlua_audio_utils_replace_sequence(0x17, 0x1A, 75, "17_Seq_smsrdeluxe_custom")
---smlua_audio_utils_replace_sequence(0x18, 0x25, 75, "18_Seq_smsrdeluxe_custom")
 --smlua_audio_utils_replace_sequence(0x1B, 0x14, 80, "1B_Seq_smsrdeluxe_custom")
 
 smlua_audio_utils_replace_sequence(0x02, 0x25, 80, "02_Seq_smsrdeluxe_custom")
@@ -106,6 +52,7 @@ smlua_audio_utils_replace_sequence(0x11, 0x25, 70, "11_Seq_smsrdeluxe_custom")
 smlua_audio_utils_replace_sequence(0x12, 0x25, 70, "12_Seq_smsrdeluxe_custom")
 smlua_audio_utils_replace_sequence(0x13, 0x1E, 65, "13_Seq_smsrdeluxe_custom")
 smlua_audio_utils_replace_sequence(0x16, 0x25, 85, "16_Seq_smsrdeluxe_custom")
+smlua_audio_utils_replace_sequence(0x18, 0x25, 75, "18_Seq_smsrdeluxe_custom")
 smlua_audio_utils_replace_sequence(0x19, 0x11, 85, "19_Seq_smsrdeluxe_custom")
 smlua_audio_utils_replace_sequence(0x1A, 0x25, 70, "1A_Seq_smsrdeluxe_custom")
 smlua_audio_utils_replace_sequence(0x1C, 0x20, 80, "1C_Seq_smsrdeluxe_custom")
@@ -139,7 +86,6 @@ smlua_audio_utils_replace_sequence(0x32, 0x25, 80, "32_Seq_smsrdeluxe_custom")
 ------------
 -- camera --
 ------------
-
 camera_set_use_course_specific_settings(false)
 
 ----------------------------------
@@ -154,14 +100,4 @@ function mario_update(m)
     end
 end
 
-function on_level_init()
-    local np = gNetworkPlayers[0]
-    if np.currLevelNum == LEVEL_BOWSER_2 then
-        vec3f_set(starPositions.BigBullyTrioStarPos,      0.0,  1950.0,  2220.0)
-    else
-        vec3f_set(starPositions.BigBullyTrioStarPos,   3700.0,   600.0, -5500.0)
-    end
-end
-
 hook_event(HOOK_MARIO_UPDATE, mario_update)
-hook_event(HOOK_ON_LEVEL_INIT, on_level_init)
