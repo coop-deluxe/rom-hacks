@@ -76,3 +76,20 @@ end
 
 -- hook the behavior
 id_bhvBowser = hook_behavior(id_bhvBowser, OBJ_LIST_GENACTOR, false, nil, bhv_custom_bowser_loop)
+
+---------------------------------------------------
+
+function bhv_custom_grand_star_init(obj)
+    obj.oFlags = OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE
+    obj.oInteractType = INTERACT_WARP
+    obj.oIntangibleTimer = 0
+    cur_obj_set_home_once()
+end
+
+function bhv_custom_grand_star_loop(obj)
+    bhv_warp_loop()
+    bhv_grand_star_loop()
+end
+
+-- hook the behavior
+id_bhvGrandStar = hook_behavior(id_bhvGrandStar, OBJ_LIST_LEVEL, true, bhv_custom_grand_star_init, bhv_custom_grand_star_loop)

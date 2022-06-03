@@ -75,3 +75,5 @@ gBehaviorValues.KoopaCatchupAgility = 8
 
 gBehaviorValues.MipsStar1Requirement = 0
 gBehaviorValues.MipsStar2Requirement = 255
+
+gBehaviorValues.GrateStarRequirement = 65
