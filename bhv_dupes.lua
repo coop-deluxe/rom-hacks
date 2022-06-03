@@ -135,7 +135,7 @@ function bhv_shyguy_init(obj)
     obj.oFlags = (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
     obj.oAnimations = gObjectAnimations.flyguy_seg8_anims_08011A64
 
-    --cur_obj_set_home_once()
+    cur_obj_set_home_once()
 
     -- SET_OBJ_PHYSICS
     obj.oWallHitboxRadius = 40
@@ -242,7 +242,7 @@ bhvSMSRRedSinkingPlatform = hook_behavior(nil, OBJ_LIST_SURFACE, true, bhv_red_s
 function bhv_red_wave_platform_init(obj)
     obj.collisionData = smlua_collision_util_get("col_rr_geo_000678_0x701f870")
     obj.oFlags = OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE
-    --cur_obj_set_home_once()
+    cur_obj_set_home_once()
     cur_obj_scale(91 / 100.0)
     bhv_horizontal_grindel_init()
 end
@@ -294,7 +294,7 @@ bhvSMSRLampPath = hook_behavior(nil, OBJ_LIST_SURFACE, true, bhv_lamp_path_init,
 function bhv_rotating_donut_platform_init(obj)
     obj.oFlags = (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
     obj.collisionData = smlua_collision_util_get("col_rr_geo_0006C0_0x70187b8")
-    --cur_obj_set_home_once()
+    cur_obj_set_home_once()
 end
 
 function bhv_rotating_donut_platform_loop(obj)
@@ -345,7 +345,7 @@ bhvSMSRLightsOnSwitch = hook_behavior(nil, OBJ_LIST_SURFACE, true, bhv_lights_on
 function bhv_rotating_wooden_gear_init(obj)
     obj.oFlags = (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
     obj.collisionData = smlua_collision_util_get("col_rr_geo_0007E8_0x7016960")
-    --cur_obj_set_home_once()
+    cur_obj_set_home_once()
 end
 
 function bhv_rotating_wooden_gear_loop(obj)
@@ -390,7 +390,7 @@ function bhv_yoshi_message_init(obj)
     obj.hitboxHeight = 150
     cur_obj_init_animation(0)
     obj.oBobombBuddyRole = 0
-    --cur_obj_set_home_once()
+    cur_obj_set_home_once()
     bhv_bobomb_buddy_init()
 end
 
@@ -535,7 +535,7 @@ bhvSMSRBoatOnTrack = hook_behavior(nil, OBJ_LIST_SURFACE, true, bhv_boat_on_trac
 --[[
 function bhv_angry_sun_init(obj)
     obj.oFlags = OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE
-    --cur_obj_set_home_once()
+    cur_obj_set_home_once()
     cur_obj_scale(28 / 100.0)
     obj.oInteractType = INTERACT_FLAME
     obj.hitboxRadius = 50
@@ -617,7 +617,7 @@ function bhv_mips_message_init(obj)
     obj.hitboxHeight = 60
     cur_obj_init_animation(0)
     obj.oBobombBuddyRole = 0
-    --cur_obj_set_home_once()
+    cur_obj_set_home_once()
     bhv_bobomb_buddy_init()
 end
 
@@ -672,7 +672,7 @@ function bhv_invisible_cannon_init(obj)
     obj.oFlags = (OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
     obj.oInteractType = INTERACT_CANNON_BASE
     obj.oPosY = obj.oPosY + -340
-    --cur_obj_set_home_once()
+    cur_obj_set_home_once()
     obj.hitboxRadius = 150
     obj.hitboxHeight = 166
     obj.oIntangibleTimer = 0
@@ -703,7 +703,7 @@ bhvSMSRTambourine = hook_behavior(nil, OBJ_LIST_SURFACE, true, bhv_tambourine_in
 function bhv_small_bee_init(obj)
     obj.oFlags = (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
     obj.header.gfx.node.flags = obj.header.gfx.node.flags | GRAPH_RENDER_BILLBOARD
-    --cur_obj_set_home_once()
+    cur_obj_set_home_once()
     bhv_init_room()
     cur_obj_scale(150 / 100.0)
 end
@@ -751,7 +751,7 @@ bhvSMSRStarMoving = hook_behavior(nil, OBJ_LIST_LEVEL, true, bhv_star_moving_ini
 function bhv_falling_domino_init(obj)
     obj.oFlags = OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE
     obj.collisionData = smlua_collision_util_get("col_ttm_geo_000DF4_0x702b870")
-    --cur_obj_set_home_once()
+    cur_obj_set_home_once()
 end
 
 function bhv_falling_domino_loop(obj)
@@ -781,7 +781,7 @@ bhvSMSRLavaLift = hook_behavior(nil, OBJ_LIST_SURFACE, true, bhv_lava_lift_init,
 function bhv_rotating_lava_platform_init(obj)
     obj.oFlags = (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
     obj.collisionData = smlua_collision_util_get("col_lll_geo_000A78_0x701d68c")
-    --cur_obj_set_home_once()
+    cur_obj_set_home_once()
 end
 
 function bhv_rotating_lava_platform_loop(obj)

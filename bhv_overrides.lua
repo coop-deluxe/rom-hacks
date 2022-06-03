@@ -38,7 +38,7 @@ function bhv_custom_big_bully_init(obj)
     obj.oFlags = (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
     obj.oAnimations = gObjectAnimations.bully_seg5_anims_0500470C
     object_drop_to_floor(obj)
-    --object_set_home(obj)
+    cur_obj_set_home_once()
     obj.oIntangibleTimer = 0
 
     cur_obj_init_animation(0)
