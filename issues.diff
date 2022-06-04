@@ -23,9 +23,7 @@ Possible Stars from a pre-made 120 File: 129
 
 (FIXED) Many platforms are not in the correct spot. (Gloomy Garden (Star 6- Calm the Angry Eye), Cloudrail Station, Bob-omb Battle Factory
 
-The Grand Star at the end of B3 puts the players in the end cutscene,
-instead of warping you to the night time version of Castle Grounds. This
-makes a star impossible to grab, as there is one in that area.
+(FIXED) The Grand Star at the end of B3 puts the players in the end cutscene, instead of warping you to the night time version of Castle Grounds. This makes a star impossible to grab, as there is one in that area.
 
 (FIXED) Yoshi is a bit weird. When Spawning into the game, he teleports to the lake on the left side of Star Leap Tower
 
@@ -40,3 +38,13 @@ makes a star impossible to grab, as there is one in that area.
 
 (FIXED) Due to Metal Cap being unreachable, Toad 2 is only possible to reach through a BLJ.
 
+------
+
+(FIXED) weird triangles in vanish cap stage
+(FIXED) second floor grate collision broken
+(FIXED) large leaf forest trees are billboarded instead of cylboarded
+(FIXED) ccm tree snowy
+(FIXED) wiggler should be twice as fast
+
+level name seems broken, doesn't update
+client camera goes invisible when server pushing skeleton thing in metal cap

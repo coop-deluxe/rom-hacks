@@ -107,7 +107,7 @@ const LevelScript local_objects_ssl_1_[] = {
     OBJECT_WITH_ACTS(58,-3144,-537,-4803,0,-153,0,0x0, bhvTree,62),
     OBJECT_WITH_ACTS(58,6219,159,967,0,107,0,0x0, bhvTree,63),
     OBJECT_WITH_ACTS(58,-3475,-759,3825,0,-95,0,0x0, bhvTree,63),
-    OBJECT_WITH_ACTS(87,5052,159,770,0,0,0,0x0, bhvWigglerHead,1),
+    OBJECT_WITH_ACTS(87,5052,159,770,0,0,0,0x0, bhvSMSRWigglerHead,1),
     OBJECT_WITH_ACTS(207,-2928,-534,-6325,0,265,0,0x0, bhvFloorSwitchHiddenObjects,63),
     OBJECT_WITH_ACTS(122,-43,3914,1846,0,0,0,0x1000000, bhvStar,63),
     OBJECT_WITH_ACTS(188,-1732,-759,1068,0,88,0,0x8c0000, bhvBobombBuddy,127),
