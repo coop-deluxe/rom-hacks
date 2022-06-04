@@ -1,5 +1,5 @@
 #include "custom.model.inc.h"
-const GeoLayout rr_geo_000958[]= {
+const GeoLayout vcutm_light_geo[]= {
 GEO_CULLING_RADIUS(1500),
 GEO_OPEN_NODE(),
 GEO_DISPLAY_LIST(6,DL_rr_geo_000958_0x701bf50),

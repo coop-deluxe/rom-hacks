@@ -1028,3 +1028,65 @@ function bhv_bullet_mine_loop(obj)
 end
 
 bhvSMSRBulletMine = hook_behavior(nil, OBJ_LIST_GENACTOR, true, bhv_bullet_mine_init, bhv_bullet_mine_loop)
+
+--------------
+
+E_MODEL_VCUTM_LIGHT = smlua_model_util_get_id("vcutm_light_geo")
+
+function bhv_lights_on_switch_init(obj)
+    obj.oFlags = (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
+    obj.oCollisionDistance = 8000
+    obj.parentObj = cur_obj_nearest_object_with_behavior(get_behavior_from_id(id_bhvFloorSwitchAnimatesObject));
+    obj_set_model_extended(obj, E_MODEL_VCUTM_LIGHT)
+end
+
+function bhv_lights_on_switch_loop(obj)
+    if obj.oFloorSwitchPressAnimationUnk100 ~= 0 then
+        if obj.parentObj ~= nil and obj.parentObj.oAction ~= 2 then
+            obj.oFloorSwitchPressAnimationUnk100 = 0
+        end
+
+        if obj.oFloorSwitchPressAnimationUnkFC ~= 0 then
+            if obj.oBehParams2ndByte >= 0 and obj.oBehParams2ndByte <= 2 then
+                obj.oFloorSwitchPressAnimationUnkF4 = 200
+            end
+        else
+            obj.oFloorSwitchPressAnimationUnkF4 = 0
+        end
+    elseif obj.parentObj ~= nil and obj.parentObj.oAction == 2 then
+        obj.oFloorSwitchPressAnimationUnkFC = obj.oFloorSwitchPressAnimationUnkFC ~ 1
+        obj.oFloorSwitchPressAnimationUnk100 = 1
+    end
+
+    if obj.oFloorSwitchPressAnimationUnkF4 ~= 0 then
+        if obj.oFloorSwitchPressAnimationUnkF4 < 60 then
+            cur_obj_play_sound_1(SOUND_GENERAL2_SWITCH_TICK_SLOW)
+        else
+            cur_obj_play_sound_1(SOUND_GENERAL2_SWITCH_TICK_FAST)
+        end
+
+        obj.oFloorSwitchPressAnimationUnkF4 = obj.oFloorSwitchPressAnimationUnkF4 - 1
+        if obj.oFloorSwitchPressAnimationUnkF4 == 0 then
+            obj.oFloorSwitchPressAnimationUnkFC = 0
+        end
+
+        if obj.oFloorSwitchPressAnimationUnkF8 < 9 then
+            obj.oFloorSwitchPressAnimationUnkF8 = obj.oFloorSwitchPressAnimationUnkF8 + 1
+        end
+    else
+        obj.oFloorSwitchPressAnimationUnkF8 = obj.oFloorSwitchPressAnimationUnkF8 - 2
+        if obj.oFloorSwitchPressAnimationUnkF8 < 0 then
+            obj.oFloorSwitchPressAnimationUnkF8 = 0
+            obj.oFloorSwitchPressAnimationUnkFC = 1
+        end
+    end
+
+    local fType = math.floor(obj.oFloorSwitchPressAnimationUnkF8 / 2)
+    if fType == 0 then
+        cur_obj_hide()
+    else
+        cur_obj_unhide()
+    end
+end
+
+bhvSMSRLightsOnSwitch = hook_behavior(nil, OBJ_LIST_SURFACE, true, bhv_lights_on_switch_init, bhv_lights_on_switch_loop)

@@ -294,17 +294,6 @@ const BehaviorScript bhvSMSRWindTurbine[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvSMSRLightsOnSwitch[] = {
-    BEGIN(OBJ_LIST_SURFACE),
-    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
-    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    SET_FLOAT(oCollisionDistance, 8000),
-    CALL_NATIVE(bhv_animates_on_floor_switch_press_init),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_animates_on_floor_switch_press_loop),
-    END_LOOP(),
-};
-
 const BehaviorScript bhvSMSRRotatingWoodenGear[] = {
     BEGIN(OBJ_LIST_SURFACE),
     ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
