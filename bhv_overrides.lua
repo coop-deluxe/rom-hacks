@@ -20,8 +20,12 @@ function bhv_custom_castle_cannon_grate_init(obj)
     end
 end
 
+function bhv_custom_castle_cannon_grate_loop(obj)
+    load_object_collision_model()
+end
+
 -- hook the behavior
-bhvSMSRHiddenAt120Stars = hook_behavior(id_bhvHiddenAt120Stars, OBJ_LIST_SURFACE, true, bhv_custom_castle_cannon_grate_init, nil)
+bhvSMSRHiddenAt120Stars = hook_behavior(id_bhvHiddenAt120Stars, OBJ_LIST_SURFACE, true, bhv_custom_castle_cannon_grate_init, bhv_custom_castle_cannon_grate_loop)
 
 
 ---------------------------------------------------
