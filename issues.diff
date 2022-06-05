@@ -1,7 +1,3 @@
-Possible Stars from a 0 Star File: 116/130
-Possible Stars from a pre-made 120 File: 129 
-(techinically 128 since you can't access Metal Cap)
-
 ---Bob-omb Island---
 (FIXED) Star 6 - Smash the Chain Chomp's Rocks (No secrets)
 
@@ -45,6 +41,6 @@ Possible Stars from a pre-made 120 File: 129
 (FIXED) large leaf forest trees are billboarded instead of cylboarded
 (FIXED) ccm tree snowy
 (FIXED) wiggler should be twice as fast
-
-level name seems broken, doesn't update
-client camera goes invisible when server pushing skeleton thing in metal cap
+(FIXED) bowser 3 - bad desync for late joiners
+game over level
+koopa the quick race - koopa wasn't there?

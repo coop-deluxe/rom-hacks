@@ -70,16 +70,17 @@ bhvBigBullyBoss = hook_behavior(id_bhvBigBully, OBJ_LIST_GENACTOR, true, bhv_cus
 
 function bhv_custom_bowser_loop(obj)
     local np = gNetworkPlayers[0]
-    if np.currLevelNum ~= LEVEL_BOWSER_3 then
+    if np.currAreaSyncValid and np.currLevelSyncValid and np.currLevelNum ~= LEVEL_BOWSER_3 then
         -- force bowser into do nothing action when not displaying cutscene
         if obj.oAction ~= 5 and obj.oAction ~= 6 and obj.oAction ~= 20 then
-            obj.oAction = 20
+            obj.oAction = 4
+            obj.oSubAction = 11
         end
     end
 end
 
 -- hook the behavior
-id_bhvBowser = hook_behavior(id_bhvBowser, OBJ_LIST_GENACTOR, false, nil, bhv_custom_bowser_loop)
+id_bhvBowserCustom = hook_behavior(id_bhvBowser, OBJ_LIST_GENACTOR, false, nil, bhv_custom_bowser_loop)
 
 ---------------------------------------------------
 
