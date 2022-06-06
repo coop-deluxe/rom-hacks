@@ -16,11 +16,11 @@ function bhv_custom_hidden_star_trigger_loop(obj)
         if not (hiddenStar == nil) then
             local count = (obj_count_objects_with_behavior_id(bhvSMSRHiddenStarTrigger) - 1)
             hiddenStar.oHiddenStarTriggerCounter = 5 - count
-            
+
             if not (hiddenStar.oHiddenStarTriggerCounter == 5) then
                 spawn_orange_number(hiddenStar.oHiddenStarTriggerCounter, 0, 0, 0)
             end
-            
+
             -- Set the last person who interacted with a secret to the 
             -- parent so only they get the star cutscene.
             player = nearest_mario_state_to_object(obj)
@@ -47,12 +47,12 @@ function bhv_custom_hidden_star_init(obj)
         if not (star == nil) then
             star.oBehParams = obj.oBehParams
         end
-        
+
         obj.activeFlags = ACTIVE_FLAG_DEACTIVATED
     end
-    
+
     obj.oHiddenStarTriggerCounter = 5 - count
-    
+
     -- We haven't interacted with a player yet.
     -- We also don't sync this as not only is it not required
     -- but it also is only set for an interaction.
