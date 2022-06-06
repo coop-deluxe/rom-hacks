@@ -40,11 +40,11 @@ gServerSettings.fixCollisionBugs = 1
 -----------
 
 -- These have a custom entry in the Star road sequences.json patch. But aren't actually ripped.
---smlua_audio_utils_replace_sequence(0x01, 0x22, 80, "01_Seq_smsrdeluxe_custom")
---smlua_audio_utils_replace_sequence(0x14, 0x1A, 80, "14_Seq_smsrdeluxe_custom")
---smlua_audio_utils_replace_sequence(0x15, 0x0E, 70, "15_Seq_smsrdeluxe_custom")
---smlua_audio_utils_replace_sequence(0x17, 0x1A, 75, "17_Seq_smsrdeluxe_custom")
---smlua_audio_utils_replace_sequence(0x1B, 0x14, 80, "1B_Seq_smsrdeluxe_custom")
+--smlua_audio_utils_replace_sequence(0x01, 0x22, 80, "01_Seq_smsrdeluxe_custom") -- SEQ_EVENT_CUTSCENE_COLLECT_STAR
+smlua_audio_utils_replace_sequence(0x14, 0x1A, 80, "14_Seq_smsrdeluxe_custom") -- SEQ_EVENT_RACE
+smlua_audio_utils_replace_sequence(0x15, 0x0E, 70, "15_Seq_smsrdeluxe_custom") -- SEQ_EVENT_CUTSCENE_STAR_SPAWN
+smlua_audio_utils_replace_sequence(0x17, 0x1A, 75, "17_Seq_smsrdeluxe_custom") -- SEQ_EVENT_CUTSCENE_COLLECT_KEY
+smlua_audio_utils_replace_sequence(0x1B, 0x14, 80, "1B_Seq_smsrdeluxe_custom") -- SEQ_EVENT_SOLVE_PUZZLE
 
 smlua_audio_utils_replace_sequence(0x02, 0x25, 80, "02_Seq_smsrdeluxe_custom")
 smlua_audio_utils_replace_sequence(0x03, 0x25, 75, "03_Seq_smsrdeluxe_custom")
@@ -89,7 +89,7 @@ smlua_audio_utils_replace_sequence(0x2C, 0x25, 70, "2C_Seq_smsrdeluxe_custom")
 
 -- We don't know the correct instruments for these.
 smlua_audio_utils_replace_sequence(0x2D, 0x25, 75, "2D_Seq_smsrdeluxe_custom")
-smlua_audio_utils_replace_sequence(0x2E, 0x25, 80, "2E_Seq_smsrdeluxe_custom")
+smlua_audio_utils_replace_sequence(0x2E, 0x12, 80, "2E_Seq_smsrdeluxe_custom")
 smlua_audio_utils_replace_sequence(0x2F, 0x25, 70, "2F_Seq_smsrdeluxe_custom")
 smlua_audio_utils_replace_sequence(0x30, 0x25, 65, "30_Seq_smsrdeluxe_custom")
 smlua_audio_utils_replace_sequence(0x31, 0x25, 80, "31_Seq_smsrdeluxe_custom")
