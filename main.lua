@@ -23,6 +23,12 @@ movtexqc_register('cotmc_1_Movtex_0',            LEVEL_COTMC,            1, 0)
 movtexqc_register('totwc_1_Movtex_0',            LEVEL_TOTWC,            1, 0)
 movtexqc_register('wmotr_1_Movtex_0',            LEVEL_WMOTR,            1, 0)
 
+------------------
+-- extra levels --
+------------------
+
+LEVEL_ZERO_LIFE = level_register('level_zerolife_entry', COURSE_NONE, 'ZERO LIFE', 'zl', 28000, 0x28, 0x28, 0x28)
+
 -----------
 -- music --
 -----------
@@ -100,4 +106,12 @@ function mario_update(m)
     end
 end
 
+function on_death()
+    local m = gMarioStates[0]
+    if m.numLives <= 1 then
+        warp_to_level(LEVEL_ZERO_LIFE, 1, 0)
+    end
+end
+
 hook_event(HOOK_MARIO_UPDATE, mario_update)
+hook_event(HOOK_ON_DEATH, on_death)
