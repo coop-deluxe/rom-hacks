@@ -29,6 +29,12 @@ movtexqc_register('wmotr_1_Movtex_0',            LEVEL_WMOTR,            1, 0)
 
 LEVEL_ZERO_LIFE = level_register('level_zerolife_entry', COURSE_NONE, 'ZERO LIFE', 'zl', 28000, 0x28, 0x28, 0x28)
 
+---------------------------
+-- force server settings --
+---------------------------
+
+gServerSettings.fixCollisionBugs = 1
+
 -----------
 -- music --
 -----------
