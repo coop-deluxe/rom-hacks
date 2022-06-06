@@ -16,11 +16,11 @@ function bhv_custom_hidden_star_trigger_loop(obj)
         if not (hiddenStar == nil) then
             local count = (obj_count_objects_with_behavior_id(bhvSMSRHiddenStarTrigger) - 1)
             hiddenStar.oHiddenStarTriggerCounter = 5 - count
-
+            
             if not (hiddenStar.oHiddenStarTriggerCounter == 5) then
                 spawn_orange_number(hiddenStar.oHiddenStarTriggerCounter, 0, 0, 0)
             end
-
+            
             -- Set the last person who interacted with a secret to the 
             -- parent so only they get the star cutscene.
             player = nearest_mario_state_to_object(obj)
@@ -41,19 +41,18 @@ end
 
 function bhv_custom_hidden_star_init(obj)
     --obj.oFlags = (OBJ_FLAG_PERSISTENT_RESPAWN | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
-
     local count = obj_count_objects_with_behavior_id(bhvSMSRHiddenStarTrigger)
     if count == 0 then
         local star = spawn_object_abs_with_rot(obj, 0, E_MODEL_STAR, id_bhvStar, obj.oPosX, obj.oPosY, obj.oPosZ, 0, 0, 0)
         if not (star == nil) then
             star.oBehParams = obj.oBehParams
         end
-
+        
         obj.activeFlags = ACTIVE_FLAG_DEACTIVATED
     end
-
+    
     obj.oHiddenStarTriggerCounter = 5 - count
-
+    
     -- We haven't interacted with a player yet.
     -- We also don't sync this as not only is it not required
     -- but it also is only set for an interaction.
@@ -654,7 +653,6 @@ function bhv_lily_pad_init(obj)
     obj.collisionData = smlua_collision_util_get("col_ttm_geo_000990_0x700f688")
     obj.oPosY = obj.oPosY - 306
     cur_obj_set_home_once()
-
     network_init_object(obj, true, { 'oSinkWhenSteppedOnUnk104', 'oGraphYOffset', 'oHomeY' })
 end
 
@@ -1034,8 +1032,8 @@ bhvSMSRBulletMine = hook_behavior(nil, OBJ_LIST_GENACTOR, true, bhv_bullet_mine_
 E_MODEL_VCUTM_LIGHT = smlua_model_util_get_id("vcutm_light_geo")
 
 function bhv_lights_on_switch_init(obj)
-    obj.oFlags = (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
-    obj.oCollisionDistance = 8000
+    --obj.oFlags = (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
+    --obj.oCollisionDistance = 8000
     obj.parentObj = cur_obj_nearest_object_with_behavior(get_behavior_from_id(id_bhvFloorSwitchAnimatesObject));
     obj_set_model_extended(obj, E_MODEL_VCUTM_LIGHT)
 end
@@ -1089,4 +1087,4 @@ function bhv_lights_on_switch_loop(obj)
     end
 end
 
-bhvSMSRLightsOnSwitch = hook_behavior(nil, OBJ_LIST_SURFACE, true, bhv_lights_on_switch_init, bhv_lights_on_switch_loop)
+--bhvSMSRLightsOnSwitch = hook_behavior(nil, OBJ_LIST_SURFACE, true, bhv_lights_on_switch_init, bhv_lights_on_switch_loop)

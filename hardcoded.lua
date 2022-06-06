@@ -6,13 +6,16 @@ gLevelValues.entryLevel             = LEVEL_CASTLE_GROUNDS
 gLevelValues.exitCastleLevel        = LEVEL_CASTLE_GROUNDS
 gLevelValues.exitCastleWarpNode     = 128
 gLevelValues.skipCreditsAt          = LEVEL_CASTLE_GROUNDS
-gLevelValues.pssSlideStarTime       = 630
-gLevelValues.metalCapDuration       = 1200/2
-gLevelValues.metalCapDurationCotmc  = 1200/2
-gLevelValues.wingCapDuration        = 3600/2
-gLevelValues.wingCapDurationTotwc   = 2400/2
-gLevelValues.vanishCapDuration      = 1200/2
-gLevelValues.vanishCapDurationVcutm = 1200/2
+
+gLevelValues.pssSlideStarTime       = 540
+
+-- Cap Times
+gLevelValues.wingCapDuration        = 2700
+gLevelValues.metalCapDuration       = 900
+gLevelValues.vanishCapDuration      = 900
+gLevelValues.wingCapDurationTotwc   = 1800
+gLevelValues.metalCapDurationCotmc  = 900
+gLevelValues.vanishCapDurationVcutm = 900
 
 -- Replace Stars
 starPositions = gLevelValues.starPositions
@@ -41,6 +44,28 @@ vec3f_set(starPositions.BigBullyTrioStarPos,   3700.0,   600.0, -5500.0)
 -- Behavior Values --
 ---------------------
 
+gBehaviorValues.ToadStar1Requirement = 0
+gBehaviorValues.ToadStar2Requirement = 0
+gBehaviorValues.ToadStar3Requirement = 0
+
+gBehaviorValues.dialogs.ToadStar1Dialog = DIALOG_082
+gBehaviorValues.dialogs.ToadStar2Dialog = DIALOG_076
+gBehaviorValues.dialogs.ToadStar3Dialog = DIALOG_083
+gBehaviorValues.dialogs.ToadStar1AfterDialog = DIALOG_154
+gBehaviorValues.dialogs.ToadStar2AfterDialog = DIALOG_155
+gBehaviorValues.dialogs.ToadStar3AfterDialog = DIALOG_156
+
+gBehaviorValues.KingBobombHealth = 4
+
+gBehaviorValues.KoopaBobAgility     = 4.0
+gBehaviorValues.KoopaCatchupAgility = 8.0
+gBehaviorValues.KoopaThiAgility     = 6.0
+
+gBehaviorValues.MipsStar1Requirement = 0
+gBehaviorValues.MipsStar2Requirement = 255
+
+gBehaviorValues.GrateStarRequirement = 65
+
 gBehaviorValues.trajectories.KoopaBobTrajectory            = get_trajectory('KoopaBoB_path')
 gBehaviorValues.trajectories.KoopaThiTrajectory            = get_trajectory('KoopaTHI_path')
 gBehaviorValues.trajectories.PlatformRrTrajectory          = get_trajectory('rr_seg7_trajectory_0702EC3C_RM2C_path')
@@ -55,25 +80,3 @@ gBehaviorValues.trajectories.PlatformRr4Trajectory         = get_trajectory('rr_
 gBehaviorValues.trajectories.RacingPenguinTrajectory       = get_trajectory('ccm_seg7_trajectory_penguin_race_RM2C_path')
 gBehaviorValues.trajectories.BowlingBallBobTrajectory      = get_trajectory('ttc_bowling_ball_path')
 gBehaviorValues.trajectories.BowlingBallThiLargeTrajectory = get_trajectory('rr_bowling_ball_path')
-
-gBehaviorValues.ToadStar1Requirement = 0
-gBehaviorValues.ToadStar2Requirement = 0
-gBehaviorValues.ToadStar3Requirement = 0
-
-gBehaviorValues.dialogs.ToadStar1Dialog = DIALOG_082
-gBehaviorValues.dialogs.ToadStar2Dialog = DIALOG_076
-gBehaviorValues.dialogs.ToadStar3Dialog = DIALOG_083
-gBehaviorValues.dialogs.ToadStar1AfterDialog = DIALOG_154
-gBehaviorValues.dialogs.ToadStar2AfterDialog = DIALOG_155
-gBehaviorValues.dialogs.ToadStar3AfterDialog = DIALOG_156
-
-gBehaviorValues.KingBobombHealth = 4
-
-gBehaviorValues.KoopaBobAgility     = 4
-gBehaviorValues.KoopaThiAgility     = 6
-gBehaviorValues.KoopaCatchupAgility = 8
-
-gBehaviorValues.MipsStar1Requirement = 0
-gBehaviorValues.MipsStar2Requirement = 255
-
-gBehaviorValues.GrateStarRequirement = 65

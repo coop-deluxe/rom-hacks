@@ -27,7 +27,6 @@ end
 -- hook the behavior
 bhvSMSRHiddenAt120Stars = hook_behavior(id_bhvHiddenAt120Stars, OBJ_LIST_SURFACE, true, bhv_custom_castle_cannon_grate_init, bhv_custom_castle_cannon_grate_loop)
 
-
 ---------------------------------------------------
 
 function bully_custom_act_level_death(obj)

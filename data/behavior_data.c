@@ -294,6 +294,17 @@ const BehaviorScript bhvSMSRWindTurbine[] = {
     END_LOOP(),
 };
 
+const BehaviorScript bhvSMSRLightsOnSwitch[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    SET_FLOAT(oCollisionDistance, 8000),
+    CALL_NATIVE(bhv_lights_on_switch_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_lights_on_switch_loop),
+    END_LOOP(),
+};
+
 const BehaviorScript bhvSMSRRotatingWoodenGear[] = {
     BEGIN(OBJ_LIST_SURFACE),
     ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
@@ -484,39 +495,6 @@ const BehaviorScript bhvSMSRMovingMushroom[] = {
 };
 
 const BehaviorScript bhvSMSRMipsMessage[] = {
-    BEGIN(OBJ_LIST_GENACTOR),
-    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
-    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_HOLDABLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    LOAD_ANIMATIONS(oAnimations, mips_seg6_anims_06015634),
-    SET_INTERACT_TYPE(INTERACT_TEXT),
-    SET_HITBOX(/*Radius*/ 100, /*Height*/ 60),
-    ANIMATE(0),
-    SET_INT(oBobombBuddyRole, 0),
-    SET_HOME(),
-    CALL_NATIVE(bhv_bobomb_buddy_init),
-    BEGIN_LOOP(),
-        SET_INT(oIntangibleTimer, 0),
-        CALL_NATIVE(bhv_bobomb_buddy_loop),
-    END_LOOP(),
-};
-
-const BehaviorScript bhvCustomSMSRPeachMessage[] = {
-    BEGIN(OBJ_LIST_GENACTOR),
-    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
-    OR_INT(oFlags, (OBJ_FLAG_PERSISTENT_RESPAWN | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    LOAD_ANIMATIONS(oAnimations, peach_seg5_anims_0501C41C),
-    ANIMATE(6),
-    SET_INTERACT_TYPE(INTERACT_TEXT),
-    SET_HITBOX(/*Radius*/ 80, /*Height*/ 100),
-    SET_INT(oIntangibleTimer, 0),
-    CALL_NATIVE(bhv_init_room),
-    CALL_NATIVE(bhv_toad_message_init),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_toad_message_loop),
-    END_LOOP(),
-};
-
-const BehaviorScript bhvCustomSMSRMipsMessage[] = {
     BEGIN(OBJ_LIST_GENACTOR),
     ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_HOLDABLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
