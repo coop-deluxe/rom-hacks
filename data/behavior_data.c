@@ -527,3 +527,46 @@ const BehaviorScript bhvSMSRWigglerHead[] = {
         CALL_NATIVE(bhv_wiggler_update), // STAR ROAD calls this twice
     END_LOOP(),
 };
+
+const BehaviorScript bhvSMSRBigLeaves[] = {
+    BEGIN(OBJ_LIST_POLELIKE),
+    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
+    OR_INT(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    SET_INTERACT_TYPE(INTERACT_POLE),
+    SET_HITBOX(/*Radius*/ 80, /*Height*/ 500),
+    SET_INT(oIntangibleTimer, 0),
+    SCALE(/*Unused*/ 0, /*Field*/ 48),
+    CALL_NATIVE(bhv_big_leaves_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_pole_base_loop),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvSMSRLilyPad[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
+    OR_INT(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_COLLISION_DATA(col_ttm_geo_000990_0x700f688),
+    ADD_FLOAT(oPosY, -306),
+    SET_HOME(),
+    CALL_NATIVE(bhv_lily_pad_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(sinking_perform_sink_check),
+        CALL_NATIVE(sinking_perform_sink_check), // STAR ROAD calls this twice
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvSMSRInvisibleCannon[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
+    OR_INT(oFlags, (OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    SET_INTERACT_TYPE(INTERACT_CANNON_BASE),
+    ADD_FLOAT(oPosY, -340),
+    SET_HOME(),
+    SET_HITBOX(/*Radius*/ 150, /*Height*/ 166),
+    SET_INT(oIntangibleTimer, 0),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_cannon_base_loop),
+    END_LOOP(),
+};
