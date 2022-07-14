@@ -33,7 +33,7 @@ LEVEL_ZERO_LIFE = level_register('level_zerolife_entry', COURSE_NONE, 'ZERO LIFE
 -- force server settings --
 ---------------------------
 
-gServerSettings.fixCollisionBugs = 1
+gLevelValues.fixCollisionBugs = 1
 
 -----------
 -- music --
