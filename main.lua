@@ -114,7 +114,7 @@ end
 
 function on_death()
     local m = gMarioStates[0]
-    if m.numLives <= 1 then
+    if m.numLives <= 0 then
         warp_to_level(LEVEL_ZERO_LIFE, 1, 0)
     end
 end
