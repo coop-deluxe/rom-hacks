@@ -35,6 +35,8 @@ LEVEL_ZERO_LIFE = level_register('level_zerolife_entry', COURSE_NONE, 'ZERO LIFE
 
 gLevelValues.fixCollisionBugs = 1
 
+gServerSettings.skipIntro = 1
+
 -----------
 -- music --
 -----------
