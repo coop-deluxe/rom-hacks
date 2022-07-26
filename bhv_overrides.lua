@@ -1,3 +1,18 @@
+function bhv_custom_koopa_the_quick_loop(obj)
+    if obj.oKoopaMovementType >= KOOPA_BP_KOOPA_THE_QUICK_BASE then
+        if gNetworkPlayers[0].currLevelNum == 27 then
+            obj.oKoopaTheQuickRaceIndex = 1
+        else
+            obj.oKoopaTheQuickRaceIndex = 0
+        end
+    end
+end
+
+-- hook the behavior
+bhvCustomKoopa = hook_behavior(id_bhvKoopa, OBJ_LIST_PUSHABLE, false, nil, bhv_custom_koopa_the_quick_loop)
+
+---------------------------------------------------
+
 function bhv_custom_castle_cannon_grate_init(obj)
     obj.oFlags = (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)
     obj.collisionData = smlua_collision_util_get("castle_grounds_seg7_collision_cannon_grill")
