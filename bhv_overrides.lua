@@ -9,7 +9,7 @@ function bhv_custom_koopa_the_quick_loop(obj)
 end
 
 -- hook the behavior
-bhvCustomKoopa = hook_behavior(id_bhvKoopa, OBJ_LIST_PUSHABLE, false, nil, bhv_custom_koopa_the_quick_loop)
+bhvKoopa = hook_behavior(id_bhvKoopa, OBJ_LIST_PUSHABLE, false, nil, bhv_custom_koopa_the_quick_loop)
 
 ---------------------------------------------------
 
