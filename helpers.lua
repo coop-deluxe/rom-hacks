@@ -177,7 +177,7 @@ function spawn_child_with_param(obj, bhvParam, modelId, bhvId)
         return nil
     end
     obj_copy_pos_and_angle(childObj, obj)
-    childObj,oBehParams2ndByte = bhvParam;
+    childObj.oBehParams2ndByte = bhvParam;
     return childObj
 end
 
@@ -188,6 +188,6 @@ function spawn_sync_child_with_param(obj, bhvParam, modelId, bhvId)
         return nil
     end
     obj_copy_pos_and_angle(childObj, obj)
-    childObj,oBehParams2ndByte = bhvParam;
+    childObj.oBehParams2ndByte = bhvParam;
     return childObj
 end

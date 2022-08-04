@@ -1,6 +1,10 @@
 function bhv_custom_koopa_the_quick_loop(obj)
     if obj.oKoopaMovementType >= KOOPA_BP_KOOPA_THE_QUICK_BASE then
-        obj.oKoopaTheQuickRaceIndex = (gNetworkPlayers[0].currAreaIndex - 1)
+        if gNetworkPlayers[0].currLevelNum == 27 then
+            obj.oKoopaTheQuickRaceIndex = 1
+        else
+            obj.oKoopaTheQuickRaceIndex = 0
+        end
     end
 end
 
