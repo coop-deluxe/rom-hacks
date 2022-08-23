@@ -18,7 +18,7 @@ function override_camera()
         return
     end
 
-    if (np.currLevelNum == LEVEL_BOWSER_1 or np.currLevelNum == LEVEL_BOWSER_2 or np.currLevelNum == LEVEL_BOWSER_3) then
+    if np.currLevelNum == LEVEL_BOWSER_3 then
         return
     end
 
