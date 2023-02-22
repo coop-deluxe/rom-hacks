@@ -10,15 +10,12 @@ sOverrideCameraModes = {
     [CAMERA_MODE_SPIRAL_STAIRS]     = true,
 }
 
+local m = gMarioStates[0]
+
 function override_camera()
-    local m = gMarioStates[0]
     local np = gNetworkPlayers[0]
 
-    if sOverrideCameraModes[m.area.camera.mode] == nil then
-        return
-    end
-
-    if np.currLevelNum == LEVEL_BOWSER_3 then
+    if sOverrideCameraModes[m.area.camera.mode] == nil or np.currLevelNum == LEVEL_BOWSER_1 or np.currLevelNum == LEVEL_BOWSER_2 or np.currLevelNum == LEVEL_BOWSER_3 then
         return
     end
 
@@ -26,23 +23,16 @@ function override_camera()
 end
 
 function on_set_camera_mode(c, mode, frames)
-    local m = gMarioStates[0]
-
-    if mode == CAMERA_MODE_ROM_HACK then
-        return true
-    end
-
-    if sOverrideCameraModes[mode] ~= nil then
+    if sOverrideCameraModes[mode] ~= nil and mode ~= CAMERA_MODE_ROM_HACK then
         -- do not allow change
-        if mode ~= CAMERA_MODE_ROM_HACK then
-            set_camera_mode(c, CAMERA_MODE_ROM_HACK, frames)
-            return false
-        end
+        set_camera_mode(c, CAMERA_MODE_ROM_HACK, frames)
         return false
     end
-
-    -- allow camera change
-    return true
 end
 
 hook_event(HOOK_ON_SET_CAMERA_MODE, on_set_camera_mode)
+hook_event(HOOK_UPDATE, function()
+    if (m.controller.buttonPressed & L_TRIG) ~= 0 then
+        center_rom_hack_camera()
+    end
+end)

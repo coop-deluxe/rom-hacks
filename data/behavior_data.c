@@ -182,7 +182,7 @@ const BehaviorScript bhvSMSRBreakableWindow[] = {
     BEGIN(OBJ_LIST_SURFACE),
     ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
     OR_INT(oFlags, (OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    LOAD_COLLISION_DATA(wf_seg7_collision_small_bomp),
+    //LOAD_COLLISION_DATA(wf_seg7_collision_small_bomp),
     SET_INT(oIntangibleTimer, 0),
     SET_HITBOX(200, 200),
     ADD_INT(oMoveAngleYaw, -0x4000),
@@ -253,6 +253,7 @@ const BehaviorScript bhvSMSRPushableTomb[] = {
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     LOAD_COLLISION_DATA(col_rr_geo_000690_0x7021438),
     SET_FLOAT(oCollisionDistance, 500),
+    CALL_NATIVE(bhv_pushable_tomb_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_pushable_loop),
         CALL_NATIVE(load_object_collision_model),
@@ -536,6 +537,7 @@ const BehaviorScript bhvSMSRBigLeaves[] = {
     SET_HITBOX(/*Radius*/ 80, /*Height*/ 500),
     SET_INT(oIntangibleTimer, 0),
     SCALE(/*Unused*/ 0, /*Field*/ 48),
+    CYLBOARD(),
     CALL_NATIVE(bhv_big_leaves_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_pole_base_loop),
@@ -570,3 +572,288 @@ const BehaviorScript bhvSMSRInvisibleCannon[] = {
         CALL_NATIVE(bhv_cannon_base_loop),
     END_LOOP(),
 };
+
+const BehaviorScript bhvSMSRTambourine[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    LOAD_COLLISION_DATA(col_ddd_geo_0004A0_0x700cbf0),
+    CALL_NATIVE(bhv_tambourine_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ttc_spinner_update),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvSMSRSmallBee[] = {
+    BEGIN(OBJ_LIST_GENACTOR),
+    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    SET_HOME(),
+    SCALE(/*Unused*/ 0, /*Field*/ 150),
+    BILLBOARD(),
+    CALL_NATIVE(bhv_init_room),
+    CALL_NATIVE(bhv_small_bee_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_fly_guy_update),
+        CALL_NATIVE(bhv_fly_guy_update), // called twice
+        ADD_INT(oAnimState, 1),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvSMSRDrumStick[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
+    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_ANGLE_TO_MOVE_ANGLE | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_COLLISION_DATA(col_ddd_geo_000478_0x7000540),
+    CALL_NATIVE(bhv_ssl_moving_pyramid_wall_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ssl_moving_pyramid_wall_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvSMSRStarMoving[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    CALL_NATIVE(bhv_init_room),
+    CALL_NATIVE(bhv_collect_star_init),
+    CALL_NATIVE(bhv_star_moving_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_collect_star_loop),
+        CALL_NATIVE(bhv_ssl_moving_pyramid_wall_loop),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvSMSRFallingDomino[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    LOAD_COLLISION_DATA(col_ttm_geo_000DF4_0x702b870),
+    SET_HOME(),
+    CALL_NATIVE(bhv_falling_domino_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_volcano_trap_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvSMSRLavaLift[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    ADD_INT(oPosY, -50),
+    LOAD_COLLISION_DATA(col_ttm_geo_000920_0x700a710),
+    CALL_NATIVE(bhv_lava_lift_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_lll_moving_octagonal_mesh_platform_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvSMSRRotatingLavaPlatform[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
+    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_COLLISION_DATA(col_lll_geo_000A78_0x701d68c),
+    SET_HOME(),
+    CALL_NATIVE(bhv_rotating_lava_platform_init),
+    BEGIN_LOOP(),
+        SET_INT(oAngleVelYaw, 256)
+        ADD_INT(oMoveAngleYaw, 256),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvSMSRSmallSwingPlatform[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
+    LOAD_COLLISION_DATA(rr_seg7_collision_pendulum),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    SET_FLOAT(oCollisionDistance, 2000),
+    SCALE(/*Unused*/ 0, /*Field*/ 160),
+    CALL_NATIVE(bhv_swing_platform_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_swing_platform_update),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvSMSRSinkingDonut[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    LOAD_COLLISION_DATA(col_rr_geo_000920_0x70295ec),
+    ADD_FLOAT(oPosY, -306),
+    SET_HOME(),
+    CALL_NATIVE(bhv_sinking_donut_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_sinking_donut_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvSMSRFloatingThwomp[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_COLLISION_DATA(thwomp_seg5_collision_0500B7D0),
+    SET_FLOAT(oGraphYOffset, 5),
+    CALL_NATIVE(bhv_butterfly_init),
+    CALL_NATIVE(bhv_floating_thwomp_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_butterfly_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvSMSRTiltingPyramid[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_COLLISION_DATA(col_geo_bbh_0005F8_0x701fba8),
+    SET_HOME(),
+    CALL_NATIVE(bhv_platform_normals_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_tilting_inverted_pyramid_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvSMSRPlatformLift[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    LOAD_COLLISION_DATA(col_geo_bbh_0005C8_0x701f700),
+    SET_INT(oArrowLiftUnk100, 1),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_arrow_lift_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvSMSRRisingLava[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
+    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_ANGLE_TO_MOVE_ANGLE | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_COLLISION_DATA(col_geo_bbh_0005B0_0x701f2d8),
+    CALL_NATIVE(bhv_ssl_moving_pyramid_wall_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ssl_moving_pyramid_wall_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvSMSRRisingTallPlatform[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
+    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_ANGLE_TO_MOVE_ANGLE | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_COLLISION_DATA(col_geo_bbh_000628_0x70200f0),
+    CALL_NATIVE(bhv_ssl_moving_pyramid_wall_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ssl_moving_pyramid_wall_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvSMSRSinkingPlatform[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_COLLISION_DATA(col_geo_bbh_000640_0x600d758),
+    ADD_FLOAT(oPosY, 5),
+    SET_FLOAT(oCollisionDistance, 2000),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_lll_sinking_square_platforms_loop),
+        CALL_NATIVE(bhv_lll_sinking_square_platforms_loop), // called twice
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvSMSRToxicWastePlatform[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
+    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_COLLISION_DATA(col_hmc_geo_000548_0x7023478),
+    ADD_FLOAT(oPosY, -50),
+    SET_HOME(),
+    CALL_NATIVE(bhv_toxic_waste_platform_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_toxic_waste_platform_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvSMSRAttractedSpaceBox[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
+    OR_INT(oFlags, (OBJ_FLAG_HOLDABLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_COLLISION_DATA(ssl_seg7_collision_tox_box),
+    ADD_FLOAT(oPosY, 256),
+    SET_HOME(),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_chuckya_loop),
+        CALL_NATIVE(bhv_spindrift_loop),
+        SCALE(/*Unused*/ 0, /*Field*/ 64),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+
+const BehaviorScript bhvSMSRSpaceBox[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
+    OR_INT(oFlags, (OBJ_FLAG_HOLDABLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_COLLISION_DATA(ssl_seg7_collision_tox_box),
+    ADD_FLOAT(oPosY, 256),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_spindrift_loop),
+        SCALE(/*Unused*/ 0, /*Field*/ 64),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvSMSRSpaceOctagonPlatform[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_COLLISION_DATA(ssl_seg7_collision_spindel),
+    SET_HOME(),
+    CALL_NATIVE(bhv_ttc_moving_bar_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ttc_moving_bar_update),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvSMSRSpaceRedPlatform[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    LOAD_COLLISION_DATA(ssl_seg7_collision_grindel),
+    SET_HOME(),
+    SCALE(/*Unused*/ 0, /*Field*/ 91),
+    CALL_NATIVE(bhv_horizontal_grindel_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_squishable_platform_loop),
+        CALL_NATIVE(bhv_squishable_platform_loop), // called twice
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvSMSRBulletMine[] = {
+    BEGIN(OBJ_LIST_GENACTOR),
+    ID(id_bhvNewId), // id_bhvNewId signifies a new behavior.
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_MOVE_XZ_USING_FVEL | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    SET_HOME(),
+    SET_HITBOX_WITH_OFFSET(50, 50, 50),
+    SET_INTERACT_TYPE(INTERACT_DAMAGE),
+    SET_INT(oDamageOrCoinValue, 3),
+    SCALE(/*Unused*/ 0, /*Field*/ 256),
+    SET_INT(oIntangibleTimer, 0),
+    CALL_NATIVE(bhv_bullet_bill_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_bullet_bill_loop),
+    END_LOOP(),
+}
