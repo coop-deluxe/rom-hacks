@@ -856,4 +856,4 @@ const BehaviorScript bhvSMSRBulletMine[] = {
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_bullet_bill_loop),
     END_LOOP(),
-}
+};
