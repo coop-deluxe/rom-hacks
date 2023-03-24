@@ -70,3 +70,24 @@ ALIGNED8 u8 jrb_1__texture_0E007010[] = {
 ALIGNED8 u8 jrb_1__texture_0E009810[] = {
 #include "levels/jrb/jrb_1_0xe009810_custom.rgba16.inc.c"
 };
+ALIGNED8 u8 jrb_geo_000978__texture_070099BE[] = {
+#include "levels/jrb/jrb_0x70099BE_custom.rgba16.inc.c"
+};
+ALIGNED8 u8 jrb_geo_000978__texture_0700A1BE[] = {
+#include "levels/jrb/jrb_0x700A1BE_custom.rgba16.inc.c"
+};
+ALIGNED8 u8 jrb_geo_000978__texture_0700F1BE[] = {
+#include "levels/jrb/jrb_0x700A1BE_custom.rgba16.inc.c"
+};
+ALIGNED8 u8 jrb_geo_000990__texture_0700F1BE[] = {
+#include "levels/jrb/jrb_0x700A1BE_custom.rgba16.inc.c"
+};
+ALIGNED8 u8 jrb_geo_000A00__texture_09000000[] = {
+#include "levels/jrb/jrb_geo_000A00_0x9000000_custom.rgba16.inc.c"
+};
+ALIGNED8 u8 jrb_geo_000A00__texture_09000800[] = {
+#include "levels/jrb/jrb_geo_000A00_0x9000800_custom.rgba16.inc.c"
+};
+ALIGNED8 u8 jrb_geo_000A00__texture_09005800[] = {
+#include "levels/jrb/jrb_geo_000A00_0x9005800_custom.rgba16.inc.c"
+};

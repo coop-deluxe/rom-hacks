@@ -11,3 +11,4 @@
 
 #include "levels/jrb/header.h"
 #include "levels/jrb/areas/1/custom.geo.inc.c"
+#include "levels/jrb/wooden_ship/custom.geo.inc.c"

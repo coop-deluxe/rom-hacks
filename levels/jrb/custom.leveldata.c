@@ -14,3 +14,4 @@
 #include "levels/jrb/areas/1/movtextNew.inc.c"
 #include "levels/jrb/areas/1/custom.model.inc.c"
 #include "levels/jrb/areas/1/custom.collision.inc.c"
+#include "levels/jrb/wooden_ship/custom.model.inc.c"
