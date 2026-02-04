@@ -39,6 +39,7 @@ ALLOC_LEVEL_POOL(),
 JUMP_LINK(script_func_global_6),
 LOAD_MODEL_FROM_GEO(55, lll_geo_sinking_rock),
 LOAD_MODEL_FROM_GEO(58, lll_geo_rotate_firebars),
+LOAD_MODEL_FROM_GEO(27, palm_tree_geo),
 JUMP_LINK(script_func_global_15),
 JUMP(level_bitfs_POSTLOAD)
 };
