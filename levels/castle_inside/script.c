@@ -28,6 +28,7 @@ MARIO(/*model*/ MODEL_MARIO, /*behParam*/ 0x00000001, /*beh*/ bhvMario),
 LOAD_MODEL_FROM_GEO(22, warp_pipe_geo),
 LOAD_MODEL_FROM_GEO(208, star_door_geo),
 LOAD_MODEL_FROM_GEO(37,  key_door_geo),
+LOAD_MODEL_FROM_GEO(222, mad_toad_geo),
 JUMP_LINK(script_func_global_1),
 JUMP_LINK(script_func_global_11),
 JUMP_LINK(script_func_global_16),
@@ -156,8 +157,8 @@ RETURN()
 };
 const LevelScript local_objects_castle_inside_2_[] = {
 OBJECT_WITH_ACTS(0,-260,-1052,-4375,0,0,0,0xa0000, bhvSpinAirborneWarp,31),
-OBJECT_WITH_ACTS(221,-648,1486,-5630,0,80,0,0x4c000000, bhvToadMessage,31),
-OBJECT_WITH_ACTS(221,-314,-1366,2511,0,-153,0,0x53000000, bhvToadMessage,31),
+OBJECT_WITH_ACTS(222,-648,1486,-5630,0,80,0,0x4c000000, bhvToadMessage,31),
+OBJECT_WITH_ACTS(222,-314,-1366,2511,0,-153,0,0x53000000, bhvToadMessage,31),
 OBJECT_WITH_ACTS(137,1428,1688,4577,0,0,0,0x0, bhvExclamationBox,31),
 OBJECT_WITH_ACTS(22,-130,-933,-5596,90,0,0,0x150000, bhvWarpPipe,31),
 OBJECT_WITH_ACTS(22,2774,-1147,-1622,0,0,0,0x160000, bhvWarpPipe,31),
